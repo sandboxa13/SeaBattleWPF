@@ -1,5 +1,6 @@
 ﻿using System.Windows;
 using SeaBattleWPF.Core.Logic;
+using SeaBattleWPF.Core.Logic.Ships.CoordsHelper;
 
 namespace SeaBattleWPF
 {
@@ -14,9 +15,12 @@ namespace SeaBattleWPF
 
             var map = new Map();
 
-            var g = new GenerateRandomCoords(map);
+            var g = new GenerateRandomCoordsTwoHp(map);
 
-            g.GenerateCoordForTwoHpShip();
+            
+            var t = g.GenerateCoords();
+
+            var a = 1;
         }
     }
 }

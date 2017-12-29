@@ -42,12 +42,15 @@
   <ItemGroup>
     <Compile Include="Logic\Block.cs" />
     <Compile Include="Logic\Coords.cs" />
-    <Compile Include="Logic\GameObject.cs" />
-    <Compile Include="Logic\GenerateRandomCoords.cs" />
+    <Compile Include="Logic\Ships\CoordsHelper\BaseRandomCoords.cs" />
+    <Compile Include="Logic\Ships\CoordsHelper\GenerateRandomCoordsOneHp.cs" />
     <Compile Include="Logic\Interfaces\IGenerateRandomCoords.cs" />
     <Compile Include="Logic\Map.cs" />
     <Compile Include="Logic\Player.cs" />
-    <Compile Include="Logic\Ship.cs" />
+    <Compile Include="Logic\Ships\BaseShip.cs" />
+    <Compile Include="Logic\Ships\CoordsHelper\GenerateRandomCoordsTwoHp.cs" />
+    <Compile Include="Logic\Ships\OneHpShip.cs" />
+    <Compile Include="Logic\Ships\TwoHpShip.cs" />
     <Compile Include="Properties\Annotations.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ViewModels\BaseViewModel.cs" />

@@ -1,14 +1,18 @@
-﻿namespace SeaBattleWPF.Core.Logic
+﻿using SeaBattleWPF.Core.Logic.Interfaces;
+
+namespace SeaBattleWPF.Core.Logic.Ships
 {
-    public class Ship
+    public class BaseShip
     {
         public string Name { get; }
         public bool IsAlive { get; }
         public int Hp { get; }
 
         public Coords Coords;
+            
+        protected IGenerateRandomCoords RandomCoords;
 
-        public Ship(int x, int y, int hp, bool isAlive, string name) 
+        public BaseShip(int x, int y, int hp, bool isAlive, string name) 
         {
             Hp = hp;
             IsAlive = isAlive;
