@@ -1,6 +1,6 @@
-﻿using SeaBattleWPF.Core.Logic.Ships.CoordsHelper;
+﻿using SeaBattle.Engine.Common.CoordsHelper;
 
-namespace SeaBattleWPF.Core.Logic.Ships
+namespace SeaBattle.Engine.Logic.Ships
 {
     public class OneHpShip : BaseShip
     {

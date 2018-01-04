@@ -30,11 +30,11 @@ namespace SeaBattleWPF.Core.Test
         {
             var coord = _generateRandom.GenerateCoords();
 
-            var x = coord.X;
-            var y = coord.Y;
+            //var x = coord.X;
+            //var y = coord.Y;
 
-            Assert.That(x, Is.InRange(1, 10));
-            Assert.That(y, Is.InRange(1, 10));
+            //Assert.That(x, Is.InRange(1, 10));
+            //Assert.That(y, Is.InRange(1, 10));
         }
     }
 }

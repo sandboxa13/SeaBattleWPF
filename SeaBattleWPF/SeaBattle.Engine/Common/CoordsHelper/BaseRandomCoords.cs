@@ -1,20 +1,21 @@
 ﻿using System;
 using System.Collections.Generic;
-using SeaBattleWPF.Core.Logic.Interfaces;
+using SeaBattle.Engine.Common.Interfaces;
+using SeaBattle.Engine.Logic;
 
-namespace SeaBattleWPF.Core.Logic.Ships.CoordsHelper
+namespace SeaBattle.Engine.Common.CoordsHelper
 {
     public class BaseRandomCoords : IGenerateRandomCoords
     {
-        protected Map _map;
+        protected Map Map;
 
-        protected Random _random;
+        protected Random Random;
 
         protected Dictionary<int, Coords> TopSideCoords = new Dictionary<int, Coords>
         {
             {1, new Coords(2, 1) },
             {2, new Coords(3, 1) }, 
-            {3, new Coords(4, 1) },
+            {3, new Coords(4, 1) }, 
             {4, new Coords(5, 1) },
             {5, new Coords(6, 1) },
             {6, new Coords(7, 1) }, 
@@ -68,7 +69,7 @@ namespace SeaBattleWPF.Core.Logic.Ships.CoordsHelper
 
         public BaseRandomCoords(Map map)
         {
-            _map = map;
+            Map = map;
         }
         public virtual List<Coords> GenerateCoords()
         {

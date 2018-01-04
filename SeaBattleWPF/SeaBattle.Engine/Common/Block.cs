@@ -1,4 +1,4 @@
-﻿namespace SeaBattleWPF.Core.Logic
+﻿namespace SeaBattle.Engine.Common
 {
     public class Block
     {

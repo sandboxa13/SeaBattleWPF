@@ -1,7 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using SeaBattle.Engine.Logic;
 
-namespace SeaBattleWPF.Core.Logic.Ships.CoordsHelper
+namespace SeaBattle.Engine.Common.CoordsHelper
 {
     public class GenerateRandomCoordsTwoHp : BaseRandomCoords
     {   
@@ -12,13 +13,13 @@ namespace SeaBattleWPF.Core.Logic.Ships.CoordsHelper
 
         public override List<Coords> GenerateCoords()
         {
-            _random = new Random();
+            Random = new Random();
 
-            var coords = new Coords(_random.Next(1, 10), _random.Next(1, 10));
+            var coords = new Coords(Random.Next(1, 10), Random.Next(1, 10));
 
             var listCoords = new List<Coords>();
 
-            if (!_map.MapBlocks[coords.X, coords.Y].IsEmpty) return listCoords;
+            if (!Map.MapBlocks[coords.X, coords.Y].IsEmpty) return listCoords;
 
             if (ExtremeValuesCoords.ContainsValue(coords))
             {
@@ -55,7 +56,7 @@ namespace SeaBattleWPF.Core.Logic.Ships.CoordsHelper
 
         private List<Coords> CheckExtremeValues(Coords coords)
         {
-            var rnd = _random.Next(0, 1);
+            var rnd = Random.Next(0, 1);
 
             var list = new List<Coords> {coords};
 
@@ -132,7 +133,7 @@ namespace SeaBattleWPF.Core.Logic.Ships.CoordsHelper
 
         private List<Coords> CheckTopSideValues(Coords coords)
         {
-            var rnd = _random.Next(0, 2);
+            var rnd = Random.Next(0, 2);
 
             var list = new List<Coords> { coords };
 
@@ -141,34 +142,33 @@ namespace SeaBattleWPF.Core.Logic.Ships.CoordsHelper
             switch (rnd)
             {
                 case 0:
-                    if (_map.MapBlocks[coords.X + 1, coords.Y].IsEmpty)
+                    if (Map.MapBlocks[coords.X + 1, coords.Y].IsEmpty)
                     {
                         coord2 = new Coords(coords.X + 1, coords.Y);
                         list.Add(coord2);
                     }
                     break;
                 case 1:
-                    if (_map.MapBlocks[coords.X - 1, coords.Y].IsEmpty)
+                    if (Map.MapBlocks[coords.X - 1, coords.Y].IsEmpty)
                     {
                         coord2 = new Coords(coords.X - 1, coords.Y);
                         list.Add(coord2);
                     }
                     break;
                 case 2:
-                    if (_map.MapBlocks[coords.X, coords.Y + 1].IsEmpty)
+                    if (Map.MapBlocks[coords.X, coords.Y + 1].IsEmpty)
                     {
                         coord2 = new Coords(coords.X, coords.Y + 1);
                         list.Add(coord2);
                     }
                     break;
             }
-
             return list;
         }
             
         private List<Coords> CheckBottomSideValues(Coords coords)
         {
-            var rnd = _random.Next(0, 2);
+            var rnd = Random.Next(0, 2);
 
             var list = new List<Coords> { coords };
 
@@ -177,21 +177,21 @@ namespace SeaBattleWPF.Core.Logic.Ships.CoordsHelper
             switch (rnd)
             {
                 case 0:
-                    if (_map.MapBlocks[coords.X, coords.Y + 1].IsEmpty)
+                    if (Map.MapBlocks[coords.X, coords.Y + 1].IsEmpty)
                     {
                         coord2 = new Coords(coords.X, coords.Y + 1);
                         list.Add(coord2);
                     }
                     break;
                 case 1:
-                    if (_map.MapBlocks[coords.X - 1, coords.Y].IsEmpty)
+                    if (Map.MapBlocks[coords.X - 1, coords.Y].IsEmpty)
                     {
                         coord2 = new Coords(coords.X - 1, coords.Y);
                         list.Add(coord2);
                     }
                     break;
                 case 2:
-                    if (_map.MapBlocks[coords.X - 1, coords.Y].IsEmpty)
+                    if (Map.MapBlocks[coords.X - 1, coords.Y].IsEmpty)
                     {
                         coord2 = new Coords(coords.X - 1, coords.Y);
                         list.Add(coord2);
@@ -204,7 +204,7 @@ namespace SeaBattleWPF.Core.Logic.Ships.CoordsHelper
 
         private List<Coords> CheckLeftSideValues(Coords coords)
         {
-            var rnd = _random.Next(0, 2);
+            var rnd = Random.Next(0, 2);
 
             var list = new List<Coords> { coords };
 
@@ -213,21 +213,21 @@ namespace SeaBattleWPF.Core.Logic.Ships.CoordsHelper
             switch (rnd)
             {
                 case 0:
-                    if (_map.MapBlocks[coords.X, coords.Y + 1].IsEmpty)
+                    if (Map.MapBlocks[coords.X, coords.Y + 1].IsEmpty)
                     {
                         coord2 = new Coords(coords.X, coords.Y + 1);
                         list.Add(coord2);
                     }
                     break;
                 case 1:
-                    if (_map.MapBlocks[coords.X, coords.Y - 1].IsEmpty)
+                    if (Map.MapBlocks[coords.X, coords.Y - 1].IsEmpty)
                     {
                         coord2 = new Coords(coords.X, coords.Y - 1);
                         list.Add(coord2);
                     }
                     break;
                 case 2:
-                    if (_map.MapBlocks[coords.X + 1, coords.Y].IsEmpty)
+                    if (Map.MapBlocks[coords.X + 1, coords.Y].IsEmpty)
                     {
                         coord2 = new Coords(coords.X + 1, coords.Y);
                         list.Add(coord2);
@@ -240,7 +240,7 @@ namespace SeaBattleWPF.Core.Logic.Ships.CoordsHelper
 
         private List<Coords> CheckRightSideValues(Coords coords)
         {
-            var rnd = _random.Next(0, 2);
+            var rnd = Random.Next(0, 2);
                 
             var list = new List<Coords> { coords };
 
@@ -249,21 +249,21 @@ namespace SeaBattleWPF.Core.Logic.Ships.CoordsHelper
             switch (rnd)
             {
                 case 0:
-                    if (_map.MapBlocks[coords.X, coords.Y + 1].IsEmpty)
+                    if (Map.MapBlocks[coords.X, coords.Y + 1].IsEmpty)
                     {
                         coord2 = new Coords(coords.X, coords.Y + 1);
                         list.Add(coord2);
                     }
                     break;
                 case 1:
-                    if (_map.MapBlocks[coords.X - 1, coords.Y].IsEmpty)
+                    if (Map.MapBlocks[coords.X - 1, coords.Y].IsEmpty)
                     {
                         coord2 = new Coords(coords.X - 1, coords.Y);
                         list.Add(coord2);
                     }
                     break;
                 case 2:
-                    if (_map.MapBlocks[coords.X, coords.Y - 1].IsEmpty)
+                    if (Map.MapBlocks[coords.X, coords.Y - 1].IsEmpty)
                     {
                         coord2 = new Coords(coords.X, coords.Y - 1);
                         list.Add(coord2);
@@ -276,7 +276,7 @@ namespace SeaBattleWPF.Core.Logic.Ships.CoordsHelper
 
         private List<Coords> CheckDefaultSide(Coords coords)
         {
-            var rnd = _random.Next(0, 3);
+            var rnd = Random.Next(0, 3);
                 
             var list = new List<Coords> { coords };
 
@@ -285,28 +285,28 @@ namespace SeaBattleWPF.Core.Logic.Ships.CoordsHelper
             switch (rnd)
             {
                 case 0:
-                    if (_map.MapBlocks[coords.X - 1, coords.Y].IsEmpty)
+                    if (Map.MapBlocks[coords.X - 1, coords.Y].IsEmpty)
                     {
                         coord2 = new Coords(coords.X - 1, coords.Y);
                         list.Add(coord2);
                     }
                     break;
                 case 1:
-                    if (_map.MapBlocks[coords.X, coords.Y - 1].IsEmpty)
+                    if (Map.MapBlocks[coords.X, coords.Y - 1].IsEmpty)
                     {
                         coord2 = new Coords(coords.X, coords.Y - 1);
                         list.Add(coord2);
                     }
                     break;
                 case 2:
-                    if (_map.MapBlocks[coords.X + 1, coords.Y].IsEmpty)
+                    if (Map.MapBlocks[coords.X + 1, coords.Y].IsEmpty)
                     {
                         coord2 = new Coords(coords.X + 1, coords.Y);
                         list.Add(coord2);
                     }
                     break;
                 case 3:
-                    if (_map.MapBlocks[coords.X, coords.Y + 1].IsEmpty)
+                    if (Map.MapBlocks[coords.X, coords.Y + 1].IsEmpty)
                     {
                         coord2 = new Coords(coords.X, coords.Y + 1);
                         list.Add(coord2);

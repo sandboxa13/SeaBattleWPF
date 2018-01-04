@@ -17,10 +17,7 @@ namespace SeaBattleWPF
 
             var g = new GenerateRandomCoordsTwoHp(map);
 
-            
             var t = g.GenerateCoords();
-
-            var a = 1;
         }
     }
 }

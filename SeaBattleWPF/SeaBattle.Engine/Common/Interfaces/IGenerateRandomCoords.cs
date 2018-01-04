@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace SeaBattleWPF.Core.Logic.Interfaces
+namespace SeaBattle.Engine.Common.Interfaces
 {
     public interface IGenerateRandomCoords
     {   

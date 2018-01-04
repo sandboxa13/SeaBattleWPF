@@ -1,6 +1,7 @@
-﻿using SeaBattleWPF.Core.Logic.Interfaces;
+﻿using SeaBattle.Engine.Common;
+using SeaBattle.Engine.Common.Interfaces;
 
-namespace SeaBattleWPF.Core.Logic.Ships
+namespace SeaBattle.Engine.Logic.Ships
 {
     public class BaseShip
     {
