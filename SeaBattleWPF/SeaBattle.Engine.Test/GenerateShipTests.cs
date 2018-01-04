@@ -1,6 +1,6 @@
 ﻿using NUnit.Framework;
 using SeaBattle.Engine.Common.MapLogic;
-using SeaBattle.Engine.Logic.Ships;
+using SeaBattle.Engine.Ships;
 
 namespace SeaBattle.Engine.Test
 {

@@ -2,7 +2,7 @@
 using SeaBattle.Engine.Common.Interfaces;
 using SeaBattle.Engine.Common.MapLogic;
 
-namespace SeaBattle.Engine.Logic.Ships
+namespace SeaBattle.Engine.Ships
 {
     public class BaseShip
     {

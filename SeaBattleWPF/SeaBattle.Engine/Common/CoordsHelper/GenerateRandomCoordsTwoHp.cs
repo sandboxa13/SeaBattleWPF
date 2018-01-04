@@ -19,15 +19,18 @@ namespace SeaBattle.Engine.Common.CoordsHelper
 
             while (coords.Count != 2)
             {
-                var generatedCoords = new Coords(Random.Next(1, 10), Random.Next(1, 10));
+                var generatedCoords = new Coords(Random.Next(1, 10), Random.Next(1, 10)); // generate start coord
 
-                if (!Map.MapBlocks[generatedCoords.X, generatedCoords.Y].IsEmpty) continue;
+                if (!Map.MapBlocks[generatedCoords.X, generatedCoords.Y].IsEmpty) continue; // check this coord on map
 
+
+                // check this coord on  extreme values ({1, 1}, {1, 0}, {0, 1}, {0, 0})
                 if (ExtremeValuesCoords.ContainsValue(generatedCoords))
                 {
                     coords = CheckExtremeValues(generatedCoords);
                 }
 
+                // check this coords on all sides
                 else if (TopSideCoords.ContainsValue(generatedCoords))
                 {
                     coords = CheckTopSideValues(generatedCoords);
@@ -47,12 +50,14 @@ namespace SeaBattle.Engine.Common.CoordsHelper
                 {
                     coords = CheckRightSideValues(generatedCoords);
                 }
-
+                // if all sides not contains this coords
+                // generate new coord
                 else
                 {
                     coords = CheckDefaultSide(generatedCoords);
                 }
 
+                //set property IsEmpty on map to false
                 Map.MapBlocks[coords[0].X, coords[0].Y].IsEmpty = false;
                 Map.MapBlocks[coords[1].X, coords[1].Y].IsEmpty = false;
             }                                  

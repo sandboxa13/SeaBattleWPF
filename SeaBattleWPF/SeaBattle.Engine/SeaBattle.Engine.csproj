@@ -40,18 +40,19 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Common\CoordsHelper\GenerateRandoomCoordsThreeHp.cs" />
     <Compile Include="Common\GameTest.cs" />
     <Compile Include="Common\MapLogic\Block.cs" />
     <Compile Include="Common\MapLogic\Coords.cs" />
     <Compile Include="Common\Interfaces\IGenerateRandomCoords.cs" />
     <Compile Include="Common\MapLogic\Map.cs" />
     <Compile Include="Common\Player.cs" />
-    <Compile Include="Logic\Ships\BaseShip.cs" />
+    <Compile Include="Ships\BaseShip.cs" />
     <Compile Include="Common\CoordsHelper\BaseRandomCoords.cs" />
     <Compile Include="Common\CoordsHelper\GenerateRandomCoordsOneHp.cs" />
     <Compile Include="Common\CoordsHelper\GenerateRandomCoordsTwoHp.cs" />
-    <Compile Include="Logic\Ships\OneHpShip.cs" />
-    <Compile Include="Logic\Ships\TwoHpShip.cs" />
+    <Compile Include="Ships\OneHpShip.cs" />
+    <Compile Include="Ships\TwoHpShip.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
