@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using SeaBattle.Engine.Common.MapLogic;
 
 namespace SeaBattle.Engine.Common.Interfaces
 {

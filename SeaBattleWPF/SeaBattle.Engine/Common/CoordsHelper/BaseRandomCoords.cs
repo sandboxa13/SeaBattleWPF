@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using SeaBattle.Engine.Common.Interfaces;
-using SeaBattle.Engine.Logic;
+using SeaBattle.Engine.Common.MapLogic;
 
 namespace SeaBattle.Engine.Common.CoordsHelper
 {

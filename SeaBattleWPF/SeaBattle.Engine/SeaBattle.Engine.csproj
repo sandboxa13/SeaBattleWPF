@@ -1,10 +1,10 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>f90513ee-0a61-424f-81c8-41a1bcd24c6a</ProjectGuid>
+    <ProjectGuid>{F90513EE-0A61-424F-81C8-41A1BCD24C6A}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>SeaBattle.Engine</RootNamespace>
@@ -30,24 +30,28 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="System"/>
-    
-    <Reference Include="System.Core"/>
-    <Reference Include="System.Xml.Linq"/>
-    <Reference Include="System.Data.DataSetExtensions"/>
-    
-    
-    <Reference Include="Microsoft.CSharp"/>
-    
-    <Reference Include="System.Data"/>
-    
-    <Reference Include="System.Net.Http"/>
-    
-    <Reference Include="System.Xml"/>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Class1.cs" />
+    <Compile Include="Common\MapLogic\Block.cs" />
+    <Compile Include="Common\MapLogic\Coords.cs" />
+    <Compile Include="Common\Interfaces\IGenerateRandomCoords.cs" />
+    <Compile Include="Common\MapLogic\Map.cs" />
+    <Compile Include="Common\Player.cs" />
+    <Compile Include="Logic\Ships\BaseShip.cs" />
+    <Compile Include="Common\CoordsHelper\BaseRandomCoords.cs" />
+    <Compile Include="Common\CoordsHelper\GenerateRandomCoordsOneHp.cs" />
+    <Compile Include="Common\CoordsHelper\GenerateRandomCoordsTwoHp.cs" />
+    <Compile Include="Logic\Ships\OneHpShip.cs" />
+    <Compile Include="Logic\Ships\TwoHpShip.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
- </Project>
+</Project>

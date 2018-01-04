@@ -1,4 +1,4 @@
-﻿namespace SeaBattle.Engine.Common
+﻿namespace SeaBattle.Engine.Common.MapLogic
 {
     public class Block
     {

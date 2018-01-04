@@ -9,7 +9,9 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{A50363C0
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SeaBattleWPF.Core", "SeaBattleWPF.Core\SeaBattleWPF.Core.csproj", "{B0E81E75-9F5A-42A7-A177-1180CE084F29}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SeaBattleWPF.Core.Test", "SeaBattleWPF.Core.Test\SeaBattleWPF.Core.Test.csproj", "{5106710C-DBC3-449F-9FAD-DD646C6E4996}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SeaBattle.Engine", "SeaBattle.Engine\SeaBattle.Engine.csproj", "{F90513EE-0A61-424F-81C8-41A1BCD24C6A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SeaBattle.Engine.Test", "SeaBattle.Engine.Test\SeaBattle.Engine.Test.csproj", "{3FB1BEE6-7479-45C7-BFC7-0E2B25307CC7}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -25,16 +27,20 @@ Global
 		{B0E81E75-9F5A-42A7-A177-1180CE084F29}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B0E81E75-9F5A-42A7-A177-1180CE084F29}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B0E81E75-9F5A-42A7-A177-1180CE084F29}.Release|Any CPU.Build.0 = Release|Any CPU
-		{5106710C-DBC3-449F-9FAD-DD646C6E4996}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{5106710C-DBC3-449F-9FAD-DD646C6E4996}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{5106710C-DBC3-449F-9FAD-DD646C6E4996}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{5106710C-DBC3-449F-9FAD-DD646C6E4996}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F90513EE-0A61-424F-81C8-41A1BCD24C6A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F90513EE-0A61-424F-81C8-41A1BCD24C6A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F90513EE-0A61-424F-81C8-41A1BCD24C6A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F90513EE-0A61-424F-81C8-41A1BCD24C6A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3FB1BEE6-7479-45C7-BFC7-0E2B25307CC7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3FB1BEE6-7479-45C7-BFC7-0E2B25307CC7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3FB1BEE6-7479-45C7-BFC7-0E2B25307CC7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3FB1BEE6-7479-45C7-BFC7-0E2B25307CC7}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
-		{5106710C-DBC3-449F-9FAD-DD646C6E4996} = {A50363C0-871E-4CC5-8A87-33E59BBAFFD7}
+		{3FB1BEE6-7479-45C7-BFC7-0E2B25307CC7} = {A50363C0-871E-4CC5-8A87-33E59BBAFFD7}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {FB1D39B6-1E11-484F-AE5A-FA1269046833}
