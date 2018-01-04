@@ -108,6 +108,10 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\SeaBattle.Engine\SeaBattle.Engine.csproj">
+      <Project>{f90513ee-0a61-424f-81c8-41a1bcd24c6a}</Project>
+      <Name>SeaBattle.Engine</Name>
+    </ProjectReference>
     <ProjectReference Include="..\SeaBattleWPF.Core\SeaBattleWPF.Core.csproj">
       <Project>{b0e81e75-9f5a-42a7-a177-1180ce084f29}</Project>
       <Name>SeaBattleWPF.Core</Name>

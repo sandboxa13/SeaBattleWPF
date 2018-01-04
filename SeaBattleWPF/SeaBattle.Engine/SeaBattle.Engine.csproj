@@ -40,6 +40,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Common\GameTest.cs" />
     <Compile Include="Common\MapLogic\Block.cs" />
     <Compile Include="Common\MapLogic\Coords.cs" />
     <Compile Include="Common\Interfaces\IGenerateRandomCoords.cs" />

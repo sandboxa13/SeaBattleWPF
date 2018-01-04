@@ -6,16 +6,15 @@ namespace SeaBattle.Engine.Logic.Ships
 {
     public class BaseShip
     {
-        public bool IsAlive { get; }
-        public int Hp { get; }
+        public bool IsAlive { get; set; }
+        public int Hp { get; set; }
 
         public List<Coords> Coords;
             
         protected IGenerateRandomCoords RandomCoords;
 
-        public BaseShip(int hp) 
+        public BaseShip() 
         {
-            Hp = hp;
             IsAlive = true;
         }
     }

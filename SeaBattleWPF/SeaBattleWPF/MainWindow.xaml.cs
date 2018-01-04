@@ -1,4 +1,6 @@
 ﻿using System.Windows;
+using SeaBattle.Engine.Common;
+using SeaBattle.Engine.Common.MapLogic;
 
 namespace SeaBattleWPF
 {
@@ -11,11 +13,11 @@ namespace SeaBattleWPF
         {
             InitializeComponent();
 
-            var map = new Map();
+            var map = new GameTest();
 
-            var g = new GenerateRandomCoordsTwoHp(map);
+            
 
-            var t = g.GenerateCoords();
+            //var t = g.GenerateCoords();
         }
     }
 }

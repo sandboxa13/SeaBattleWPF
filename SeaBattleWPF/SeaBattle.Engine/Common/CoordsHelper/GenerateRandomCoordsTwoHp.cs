@@ -15,43 +15,48 @@ namespace SeaBattle.Engine.Common.CoordsHelper
         {
             Random = new Random();
 
-            var coords = new Coords(Random.Next(1, 10), Random.Next(1, 10));
+            var coords = new List<Coords>();
 
-            var listCoords = new List<Coords>();
-
-            if (!Map.MapBlocks[coords.X, coords.Y].IsEmpty) return listCoords;
-
-            if (ExtremeValuesCoords.ContainsValue(coords))
+            while (coords.Count != 2)
             {
-                listCoords = CheckExtremeValues(coords);
-            }
+                var generatedCoords = new Coords(Random.Next(1, 10), Random.Next(1, 10));
 
-            else if (TopSideCoords.ContainsValue(coords))
-            {
-                listCoords = CheckTopSideValues(coords);
-            }
+                if (!Map.MapBlocks[generatedCoords.X, generatedCoords.Y].IsEmpty) continue;
 
-            else if (BottomSideCoords.ContainsValue(coords))
-            {
-                listCoords = CheckBottomSideValues(coords);
-            }
+                if (ExtremeValuesCoords.ContainsValue(generatedCoords))
+                {
+                    coords = CheckExtremeValues(generatedCoords);
+                }
 
-            else if (LeftSideCoords.ContainsValue(coords))
-            {
-                listCoords = CheckLeftSideValues(coords);
-            }
+                else if (TopSideCoords.ContainsValue(generatedCoords))
+                {
+                    coords = CheckTopSideValues(generatedCoords);
+                }
 
-            else if (RightSideCoords.ContainsValue(coords))
-            {
-                listCoords = CheckRightSideValues(coords);
-            }
+                else if (BottomSideCoords.ContainsValue(generatedCoords))
+                {
+                    coords = CheckBottomSideValues(generatedCoords);
+                }
 
-            else
-            {
-                listCoords = CheckDefaultSide(coords);
-            }
+                else if (LeftSideCoords.ContainsValue(generatedCoords))
+                {
+                    coords = CheckLeftSideValues(generatedCoords);
+                }
 
-            return listCoords;
+                else if (RightSideCoords.ContainsValue(generatedCoords))
+                {
+                    coords = CheckRightSideValues(generatedCoords);
+                }
+
+                else
+                {
+                    coords = CheckDefaultSide(generatedCoords);
+                }
+
+                Map.MapBlocks[coords[0].X, coords[0].Y].IsEmpty = false;
+                Map.MapBlocks[coords[1].X, coords[1].Y].IsEmpty = false;
+            }                                  
+            return coords;
         }
 
         private List<Coords> CheckExtremeValues(Coords coords)

@@ -5,8 +5,10 @@ namespace SeaBattle.Engine.Logic.Ships
 {
     public class TwoHpShip : BaseShip
     {
-        public TwoHpShip(int hp, Map map) : base( hp)
+        public TwoHpShip(Map map)
         {
+            Hp = 2;
+
             RandomCoords = new GenerateRandomCoordsTwoHp(map);
 
             Coords = RandomCoords.GenerateCoords();
