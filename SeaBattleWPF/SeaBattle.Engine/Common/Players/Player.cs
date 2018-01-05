@@ -1,5 +1,4 @@
 ﻿using System.Collections.Generic;
-using System.Linq;
 using SeaBattle.Engine.Common.MapLogic;
 using SeaBattle.Engine.Ships;
 
@@ -40,10 +39,11 @@ namespace SeaBattle.Engine.Common.Players
                 new OneHpShip(Map),
                 new OneHpShip(Map),
                 new OneHpShip(Map),
-                new OneHpShip(Map),
-                new OneHpShip(Map),
-                new OneHpShip(Map),
-                new OneHpShip(Map)
+                new TwoHpShip(Map),
+                new TwoHpShip(Map),
+                new TwoHpShip(Map),
+                new ThreeHpShip(Map),
+                new ThreeHpShip(Map)
             };
 
             return ships;
@@ -57,25 +57,20 @@ namespace SeaBattle.Engine.Common.Players
 
                 Map.MapBlocks[coord.X, coord.Y].State = BlockState.IsShooted;
 
-
-
                 foreach (var baseShip in Map._ships)
                 {
                     foreach (var baseShipCoord in baseShip.Coords)
                     {
-                        if (baseShipCoord.X ==  coord.X && baseShipCoord.Y == coord.Y)
+                        if (baseShipCoord.X != coord.X || baseShipCoord.Y != coord.Y) continue;
+
+                        if (baseShip.Hp > 0)
                         {
-                            if (baseShip.Hp > 0)
-                            {
-                                Win = true;
-                                baseShip.Hp--;
-                            }
-
-                            else
-                                baseShip.IsAlive = false;
+                            baseShip.Hp--;
                         }
-
-                        
+                        else
+                        {
+                            baseShip.IsAlive = false;
+                        }
                     }
                 }
             }
