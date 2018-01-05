@@ -1,4 +1,5 @@
-﻿using SeaBattle.Engine.Common.MapLogic;
+﻿using System;
+using SeaBattle.Engine.Common.MapLogic;
 using SeaBattle.Engine.Common.Players;
 using SeaBattle.Engine.Common.Players.AI;
 
@@ -15,6 +16,15 @@ namespace SeaBattle.Engine.Common
         {
             _computer = computer;
             _player = player;
+
+            var random = new Random();
+
+            while (!_player.Win)
+            {
+                var coord = new Coords(random.Next(0, 9), random.Next(0, 9));
+
+                _player.CheckOnShoot(coord);
+            }
         }
     }
 }

@@ -27,41 +27,61 @@ namespace SeaBattle.Engine.Common.Players
 
             EnemyMap = new Map();
 
-            Map._ships.AddRange(GenerateDefaultShips());           
+            Map._ships.AddRange(GenerateDefaultShips());   
         }
 
         public Player(List<BaseShip> ships) => Map = new Map { _ships = ships };
 
         private IEnumerable<BaseShip> GenerateDefaultShips()
         {
-            var ships = new List<BaseShip>();
-
-            ships.AddRange(GeneratorHelper(new OneHpShip(Map), 4));
-            ships.AddRange(GeneratorHelper(new TwoHpShip(Map), 4));
-
-            return ships;
-        }
-
-        private static IEnumerable<BaseShip> GeneratorHelper(BaseShip ship, int count)
-        {
-            var ships = new List<BaseShip>();
-
-            for (var i = 0; i < count; i++)
+            var ships = new List<BaseShip>
             {
-                ships.Add(ship);
-            }
+                new OneHpShip(Map),
+                new OneHpShip(Map),
+                new OneHpShip(Map),
+                new OneHpShip(Map),
+                new OneHpShip(Map),
+                new OneHpShip(Map),
+                new OneHpShip(Map),
+                new OneHpShip(Map)
+            };
 
             return ships;
         }
 
-        private void CheckOnShoot(Coords coord)
+        public void CheckOnShoot(Coords coord)
         {
             if (!Win)
             {
-                if (Map.MapBlocks[coord.X, coord.Y].State == BlockState.IsEmpty)
-                {
+                if (Map.MapBlocks[coord.X, coord.Y].State != BlockState.IsBusy) return;
 
+                Map.MapBlocks[coord.X, coord.Y].State = BlockState.IsShooted;
+
+
+
+                foreach (var baseShip in Map._ships)
+                {
+                    foreach (var baseShipCoord in baseShip.Coords)
+                    {
+                        if (baseShipCoord.X ==  coord.X && baseShipCoord.Y == coord.Y)
+                        {
+                            if (baseShip.Hp > 0)
+                            {
+                                Win = true;
+                                baseShip.Hp--;
+                            }
+
+                            else
+                                baseShip.IsAlive = false;
+                        }
+
+                        
+                    }
                 }
+            }
+            else
+            {
+                // TODO Logic for handle playeer win
             }
         }
     }
