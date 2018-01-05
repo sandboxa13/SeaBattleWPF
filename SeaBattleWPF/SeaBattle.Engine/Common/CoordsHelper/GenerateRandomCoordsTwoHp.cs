@@ -93,51 +93,39 @@ namespace SeaBattle.Engine.Common.CoordsHelper
 
             if (coords == ExtremeValuesCoords[1])
             {
-                Coords coord2;
-
                 switch (rnd)
                 {
                     case 0:
-                        coord2 = new Coords(coords.X - 1, coords.Y - 1);
-                        list.Add(coord2);
+                        list.Add(new Coords(coords.X - 1, coords.Y - 1));
                         break;
                     case 1:
-                        coord2 = new Coords(coords.X + 10, coords.Y + 10);
-                        list.Add(coord2);
+                        list.Add(new Coords(coords.X + 10, coords.Y + 10));
                         break;
                 }
             }
 
             if (coords == ExtremeValuesCoords[2])
-            {
-                Coords coord2;
-
+            {             
                 switch (rnd)
                 {
                     case 0:
-                        coord2 = new Coords(coords.X + 1, coords.Y + 1);
-                        list.Add(coord2);
+                        list.Add(new Coords(coords.X + 1, coords.Y + 1));
                         break;
-                    case 1:
-                        coord2 = new Coords(coords.X - 10, coords.Y - 10);
-                        list.Add(coord2);
+                    case 1:                     
+                        list.Add(new Coords(coords.X - 10, coords.Y - 10));
                         break;
                 }
             }
 
             if (coords == ExtremeValuesCoords[3])
             {
-                Coords coord2;
-
                 switch (rnd)
                 {
                     case 0:
-                        coord2 = new Coords(coords.X - 1, coords.Y - 1);
-                        list.Add(coord2);
+                        list.Add(new Coords(coords.X - 1, coords.Y - 1));
                         break;
                     case 1:
-                        coord2 = new Coords(coords.X - 10, coords.Y - 10);
-                        list.Add(coord2);
+                        list.Add(new Coords(coords.X - 10, coords.Y - 10));
                         break;
                 }
             }

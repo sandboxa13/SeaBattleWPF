@@ -24,6 +24,7 @@ namespace SeaBattle.Engine.Common.CoordsHelper
                 if (!Map.MapBlocks[generatedCoords.X, generatedCoords.Y].IsEmpty) continue;
 
                 Map.MapBlocks[generatedCoords.X, generatedCoords.Y].IsEmpty = false;
+
                 coords.Add(generatedCoords);
             }
            
