@@ -68,6 +68,7 @@ namespace SeaBattle.Engine.Common.CoordsHelper
 
             Map.MapBlocks[coords[0].X, coords[0].Y].IsEmpty = false;
             Map.MapBlocks[coords[1].X, coords[1].Y].IsEmpty = false;
+
             return coords;
         }
 
@@ -79,17 +80,13 @@ namespace SeaBattle.Engine.Common.CoordsHelper
 
             if (coords == ExtremeValuesCoords[0])
             {
-                Coords coord2;
-
                 switch (rnd)
                 {
                     case 0:
-                         coord2 = new Coords(coords.X + 1, coords.Y + 1);
-                         list.Add(coord2);
+                         list.Add(new Coords(coords.X + 1, coords.Y + 1));
                         break;
                     case 1:
-                         coord2 = new Coords(coords.X + 10, coords.Y + 10);
-                         list.Add(coord2);
+                         list.Add(new Coords(coords.X + 10, coords.Y + 10));
                         break;
                 }
             }
@@ -154,29 +151,24 @@ namespace SeaBattle.Engine.Common.CoordsHelper
 
             var list = new List<Coords> { coords };
 
-            Coords coord2;
-
             switch (rnd)
             {
                 case 0:
                     if (Map.MapBlocks[coords.X + 1, coords.Y].IsEmpty)
                     {
-                        coord2 = new Coords(coords.X + 1, coords.Y);
-                        list.Add(coord2);
+                        list.Add(new Coords(coords.X + 1, coords.Y));
                     }
                     break;
                 case 1:
                     if (Map.MapBlocks[coords.X - 1, coords.Y].IsEmpty)
                     {
-                        coord2 = new Coords(coords.X - 1, coords.Y);
-                        list.Add(coord2);
+                        list.Add(new Coords(coords.X - 1, coords.Y));
                     }
                     break;
                 case 2:
                     if (Map.MapBlocks[coords.X, coords.Y + 1].IsEmpty)
                     {
-                        coord2 = new Coords(coords.X, coords.Y + 1);
-                        list.Add(coord2);
+                        list.Add(new Coords(coords.X, coords.Y + 1));
                     }
                     break;
             }
@@ -189,29 +181,24 @@ namespace SeaBattle.Engine.Common.CoordsHelper
 
             var list = new List<Coords> { coords };
 
-            Coords coord2;
-
             switch (rnd)
             {
                 case 0:
                     if (Map.MapBlocks[coords.X, coords.Y + 1].IsEmpty)
                     {
-                        coord2 = new Coords(coords.X, coords.Y + 1);
-                        list.Add(coord2);
+                        list.Add(new Coords(coords.X, coords.Y + 1));
                     }
                     break;
                 case 1:
                     if (Map.MapBlocks[coords.X - 1, coords.Y].IsEmpty)
                     {
-                        coord2 = new Coords(coords.X - 1, coords.Y);
-                        list.Add(coord2);
+                        list.Add(new Coords(coords.X - 1, coords.Y));
                     }
                     break;
                 case 2:
                     if (Map.MapBlocks[coords.X - 1, coords.Y].IsEmpty)
                     {
-                        coord2 = new Coords(coords.X - 1, coords.Y);
-                        list.Add(coord2);
+                        list.Add(new Coords(coords.X - 1, coords.Y));
                     }
                     break;
             }
@@ -225,29 +212,24 @@ namespace SeaBattle.Engine.Common.CoordsHelper
 
             var list = new List<Coords> { coords };
 
-            Coords coord2;
-
             switch (rnd)
             {
                 case 0:
                     if (Map.MapBlocks[coords.X, coords.Y + 1].IsEmpty)
                     {
-                        coord2 = new Coords(coords.X, coords.Y + 1);
-                        list.Add(coord2);
+                        list.Add(new Coords(coords.X, coords.Y + 1));
                     }
                     break;
                 case 1:
                     if (Map.MapBlocks[coords.X, coords.Y - 1].IsEmpty)
                     {
-                        coord2 = new Coords(coords.X, coords.Y - 1);
-                        list.Add(coord2);
+                        list.Add(new Coords(coords.X, coords.Y - 1));
                     }
                     break;
                 case 2:
                     if (Map.MapBlocks[coords.X + 1, coords.Y].IsEmpty)
                     {
-                        coord2 = new Coords(coords.X + 1, coords.Y);
-                        list.Add(coord2);
+                        list.Add(new Coords(coords.X + 1, coords.Y));
                     }
                     break;
             }
@@ -261,29 +243,24 @@ namespace SeaBattle.Engine.Common.CoordsHelper
                 
             var list = new List<Coords> { coords };
 
-            Coords coord2;
-
             switch (rnd)
             {
                 case 0:
                     if (Map.MapBlocks[coords.X, coords.Y + 1].IsEmpty)
                     {
-                        coord2 = new Coords(coords.X, coords.Y + 1);
-                        list.Add(coord2);
+                        list.Add(new Coords(coords.X, coords.Y + 1));
                     }
                     break;
                 case 1:
                     if (Map.MapBlocks[coords.X - 1, coords.Y].IsEmpty)
                     {
-                        coord2 = new Coords(coords.X - 1, coords.Y);
-                        list.Add(coord2);
+                        list.Add(new Coords(coords.X - 1, coords.Y));
                     }
                     break;
                 case 2:
                     if (Map.MapBlocks[coords.X, coords.Y - 1].IsEmpty)
                     {
-                        coord2 = new Coords(coords.X, coords.Y - 1);
-                        list.Add(coord2);
+                        list.Add(new Coords(coords.X, coords.Y - 1));
                     }
                     break;
             }

@@ -11,7 +11,7 @@ namespace SeaBattle.Engine.Common
         private readonly Map _map = new Map();
         public GameTest()   
         {
-            for (var i = 0; i < 4; i++)
+            for (var i = 0; i < 2; i++)
             {
                 _ships.Add(new TwoHpShip(_map));
             }
