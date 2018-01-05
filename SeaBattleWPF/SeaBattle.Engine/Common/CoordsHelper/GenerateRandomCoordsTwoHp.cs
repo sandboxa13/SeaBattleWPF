@@ -26,7 +26,7 @@ namespace SeaBattle.Engine.Common.CoordsHelper
                 var generatedCoords = new Coords(Random.Next(0, 9), Random.Next(0, 9));
              
 
-                if (!Map.MapBlocks[generatedCoords.X, generatedCoords.Y].IsEmpty) continue; // check this coord on map
+                if (Map.MapBlocks[generatedCoords.X, generatedCoords.Y].State == BlockState.IsBusy) continue; // check this coord on map
 
 
                 if (ExtremeValuesCoords.Contains(generatedCoords))
@@ -66,8 +66,8 @@ namespace SeaBattle.Engine.Common.CoordsHelper
                 // set property IsEmpty to false
             }
 
-            Map.MapBlocks[coords[0].X, coords[0].Y].IsEmpty = false;
-            Map.MapBlocks[coords[1].X, coords[1].Y].IsEmpty = false;
+            Map.MapBlocks[coords[0].X, coords[0].Y].State = BlockState.IsBusy;
+            Map.MapBlocks[coords[1].X, coords[1].Y].State = BlockState.IsBusy;
 
             return coords;
         }
@@ -142,19 +142,19 @@ namespace SeaBattle.Engine.Common.CoordsHelper
             switch (rnd)
             {
                 case 0:
-                    if (Map.MapBlocks[coords.X + 1, coords.Y].IsEmpty)
+                    if (Map.MapBlocks[coords.X + 1, coords.Y].State == BlockState.IsEmpty)
                     {
                         list.Add(new Coords(coords.X + 1, coords.Y));
                     }
                     break;
                 case 1:
-                    if (Map.MapBlocks[coords.X - 1, coords.Y].IsEmpty)
+                    if (Map.MapBlocks[coords.X - 1, coords.Y].State == BlockState.IsEmpty)
                     {
                         list.Add(new Coords(coords.X - 1, coords.Y));
                     }
                     break;
                 case 2:
-                    if (Map.MapBlocks[coords.X, coords.Y + 1].IsEmpty)
+                    if (Map.MapBlocks[coords.X, coords.Y + 1].State == BlockState.IsEmpty)
                     {
                         list.Add(new Coords(coords.X, coords.Y + 1));
                     }
@@ -172,19 +172,19 @@ namespace SeaBattle.Engine.Common.CoordsHelper
             switch (rnd)
             {
                 case 0:
-                    if (Map.MapBlocks[coords.X, coords.Y + 1].IsEmpty)
+                    if (Map.MapBlocks[coords.X, coords.Y + 1].State == BlockState.IsEmpty)
                     {
                         list.Add(new Coords(coords.X, coords.Y + 1));
                     }
                     break;
                 case 1:
-                    if (Map.MapBlocks[coords.X - 1, coords.Y].IsEmpty)
+                    if (Map.MapBlocks[coords.X - 1, coords.Y].State == BlockState.IsEmpty)
                     {
                         list.Add(new Coords(coords.X - 1, coords.Y));
                     }
                     break;
                 case 2:
-                    if (Map.MapBlocks[coords.X - 1, coords.Y].IsEmpty)
+                    if (Map.MapBlocks[coords.X - 1, coords.Y].State == BlockState.IsEmpty)
                     {
                         list.Add(new Coords(coords.X - 1, coords.Y));
                     }
@@ -203,19 +203,19 @@ namespace SeaBattle.Engine.Common.CoordsHelper
             switch (rnd)
             {
                 case 0:
-                    if (Map.MapBlocks[coords.X, coords.Y + 1].IsEmpty)
+                    if (Map.MapBlocks[coords.X, coords.Y + 1].State == BlockState.IsEmpty)
                     {
                         list.Add(new Coords(coords.X, coords.Y + 1));
                     }
                     break;
                 case 1:
-                    if (Map.MapBlocks[coords.X, coords.Y - 1].IsEmpty)
+                    if (Map.MapBlocks[coords.X, coords.Y - 1].State == BlockState.IsEmpty)
                     {
                         list.Add(new Coords(coords.X, coords.Y - 1));
                     }
                     break;
                 case 2:
-                    if (Map.MapBlocks[coords.X + 1, coords.Y].IsEmpty)
+                    if (Map.MapBlocks[coords.X + 1, coords.Y].State == BlockState.IsEmpty)
                     {
                         list.Add(new Coords(coords.X + 1, coords.Y));
                     }
@@ -234,19 +234,19 @@ namespace SeaBattle.Engine.Common.CoordsHelper
             switch (rnd)
             {
                 case 0:
-                    if (Map.MapBlocks[coords.X, coords.Y + 1].IsEmpty)
+                    if (Map.MapBlocks[coords.X, coords.Y + 1].State == BlockState.IsEmpty)
                     {
                         list.Add(new Coords(coords.X, coords.Y + 1));
                     }
                     break;
                 case 1:
-                    if (Map.MapBlocks[coords.X - 1, coords.Y].IsEmpty)
+                    if (Map.MapBlocks[coords.X - 1, coords.Y].State == BlockState.IsEmpty)
                     {
                         list.Add(new Coords(coords.X - 1, coords.Y));
                     }
                     break;
                 case 2:
-                    if (Map.MapBlocks[coords.X, coords.Y - 1].IsEmpty)
+                    if (Map.MapBlocks[coords.X, coords.Y - 1].State == BlockState.IsEmpty)
                     {
                         list.Add(new Coords(coords.X, coords.Y - 1));
                     }
@@ -265,25 +265,25 @@ namespace SeaBattle.Engine.Common.CoordsHelper
             switch (rnd)
             {
                 case 0:
-                    if (Map.MapBlocks[coords.X - 1, coords.Y].IsEmpty)
+                    if (Map.MapBlocks[coords.X - 1, coords.Y].State == BlockState.IsEmpty)
                     {
                         list.Add(new Coords(coords.X - 1, coords.Y));
                     }
                     break;
                 case 1:
-                    if (Map.MapBlocks[coords.X, coords.Y - 1].IsEmpty)
+                    if (Map.MapBlocks[coords.X, coords.Y - 1].State == BlockState.IsEmpty)
                     {
                         list.Add(new Coords(coords.X, coords.Y - 1));
                     }
                     break;
                 case 2:
-                    if (Map.MapBlocks[coords.X + 1, coords.Y].IsEmpty)
+                    if (Map.MapBlocks[coords.X + 1, coords.Y].State == BlockState.IsEmpty)
                     {
                         list.Add(new Coords(coords.X + 1, coords.Y));
                     }
                     break;
                 case 3:
-                    if (Map.MapBlocks[coords.X, coords.Y + 1].IsEmpty)
+                    if (Map.MapBlocks[coords.X, coords.Y + 1].State == BlockState.IsEmpty)
                     {
                         list.Add(new Coords(coords.X, coords.Y + 1));
                     }

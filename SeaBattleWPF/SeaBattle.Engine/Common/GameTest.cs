@@ -16,20 +16,5 @@ namespace SeaBattle.Engine.Common
             _computer = computer;
             _player = player;
         }
-
-        private void CheckOnWin(Coords coord, Player player)
-        {
-            if (player == _player && !_player.Win )
-            {
-                
-            }
-            if (_computer.Win)
-            {
-                // TODO logic for handle _computer win
-            }   
-
-
-
-        }
     }
 }

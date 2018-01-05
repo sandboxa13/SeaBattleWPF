@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using SeaBattle.Engine.Common.MapLogic;
 using SeaBattle.Engine.Ships;
 
@@ -51,6 +52,17 @@ namespace SeaBattle.Engine.Common.Players
             }
 
             return ships;
+        }
+
+        private void CheckOnShoot(Coords coord)
+        {
+            if (!Win)
+            {
+                if (Map.MapBlocks[coord.X, coord.Y].State == BlockState.IsEmpty)
+                {
+
+                }
+            }
         }
     }
 }

@@ -21,9 +21,9 @@ namespace SeaBattle.Engine.Common.CoordsHelper
             {
                 var generatedCoords = new Coords(Random.Next(0, 9), Random.Next(0, 9));
 
-                if (!Map.MapBlocks[generatedCoords.X, generatedCoords.Y].IsEmpty) continue;
+                if (Map.MapBlocks[generatedCoords.X, generatedCoords.Y].State == BlockState.IsBusy) continue;
 
-                Map.MapBlocks[generatedCoords.X, generatedCoords.Y].IsEmpty = false;
+                Map.MapBlocks[generatedCoords.X, generatedCoords.Y].State = BlockState.IsBusy;
 
                 coords.Add(generatedCoords);
             }

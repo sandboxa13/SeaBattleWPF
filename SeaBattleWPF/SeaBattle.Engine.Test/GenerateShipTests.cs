@@ -8,6 +8,7 @@ namespace SeaBattle.Engine.Test
     public class GenerateShipTests
     {
         [Test]
+        [Repeat(10000)]
         public void Generate_One_Hp_Ship_Test()
         {
             var ship = new OneHpShip(new Map());
@@ -18,6 +19,7 @@ namespace SeaBattle.Engine.Test
         }
 
         [Test]
+        [Repeat(10000)]
         public void Generate_Two_Hp_Ship_Test()
         {
             var ship = new TwoHpShip(new Map());

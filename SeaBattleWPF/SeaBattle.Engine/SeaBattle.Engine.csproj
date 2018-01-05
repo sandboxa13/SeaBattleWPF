@@ -43,6 +43,7 @@
     <Compile Include="Common\CoordsHelper\GenerateRandoomCoordsThreeHp.cs" />
     <Compile Include="Common\GameTest.cs" />
     <Compile Include="Common\MapLogic\Block.cs" />
+    <Compile Include="Common\MapLogic\BlockState.cs" />
     <Compile Include="Common\MapLogic\Coords.cs" />
     <Compile Include="Common\Interfaces\IGenerateRandomCoords.cs" />
     <Compile Include="Common\MapLogic\Map.cs" />

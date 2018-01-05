@@ -2,11 +2,11 @@
 {
     public class Block
     {
-        public bool IsEmpty;
+        public BlockState State;
 
-        public Block()
+        public Block()  
         {
-            IsEmpty = true;
+            State = BlockState.IsEmpty;
         }
     }
 }
