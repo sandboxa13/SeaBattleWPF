@@ -46,7 +46,8 @@
     <Compile Include="Common\MapLogic\Coords.cs" />
     <Compile Include="Common\Interfaces\IGenerateRandomCoords.cs" />
     <Compile Include="Common\MapLogic\Map.cs" />
-    <Compile Include="Common\Player.cs" />
+    <Compile Include="Common\Players\AI\Computer.cs" />
+    <Compile Include="Common\Players\Player.cs" />
     <Compile Include="Ships\BaseShip.cs" />
     <Compile Include="Common\CoordsHelper\BaseRandomCoords.cs" />
     <Compile Include="Common\CoordsHelper\GenerateRandomCoordsOneHp.cs" />
@@ -55,5 +56,6 @@
     <Compile Include="Ships\TwoHpShip.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

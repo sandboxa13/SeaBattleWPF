@@ -1,8 +1,13 @@
-﻿namespace SeaBattle.Engine.Common.MapLogic
+﻿using System.Collections.Generic;
+using SeaBattle.Engine.Ships;
+
+namespace SeaBattle.Engine.Common.MapLogic
 {   
     public class Map
     {
         public Block[,] MapBlocks;
+
+        public List<BaseShip> _ships = new List<BaseShip>();
 
         public Map()
         {

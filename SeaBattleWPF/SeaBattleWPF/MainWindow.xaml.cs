@@ -12,12 +12,6 @@ namespace SeaBattleWPF
         public MainWindow()
         {
             InitializeComponent();
-
-            var map = new GameTest();
-
-            
-
-            //var t = g.GenerateCoords();
         }
     }
 }

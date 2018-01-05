@@ -1,31 +1,35 @@
-﻿using System.Collections.Generic;
-using SeaBattle.Engine.Common.MapLogic;
-using SeaBattle.Engine.Ships;
+﻿using SeaBattle.Engine.Common.MapLogic;
+using SeaBattle.Engine.Common.Players;
+using SeaBattle.Engine.Common.Players.AI;
 
 namespace SeaBattle.Engine.Common
 {
     public class GameTest
     {
-        private readonly List<BaseShip> _ships = new List<BaseShip>();
+        private readonly Player _player;
 
-        private readonly Map _map = new Map();
-        public GameTest()   
+        private readonly Computer _computer;
+
+
+        public GameTest(Computer computer, Player player)
         {
-            for (var i = 0; i < 2; i++)
-            {
-                _ships.Add(new TwoHpShip(_map));
-            }
-
-            for (var i = 0; i < 4; i++)
-            {
-                _ships.Add(new OneHpShip(_map));
-                
-            }
+            _computer = computer;
+            _player = player;
         }
 
-        private bool CheckOnShoot(int x, int y)
+        private void CheckOnWin(Coords coord, Player player)
         {
-            return _map.MapBlocks[x, y].IsEmpty;
+            if (player == _player && !_player.Win )
+            {
+                
+            }
+            if (_computer.Win)
+            {
+                // TODO logic for handle _computer win
+            }   
+
+
+
         }
     }
 }
