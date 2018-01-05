@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using SeaBattle.Engine.Common.MapLogic;
 
 namespace SeaBattle.Engine.Common.CoordsHelper
@@ -17,50 +18,56 @@ namespace SeaBattle.Engine.Common.CoordsHelper
 
             var coords = new List<Coords>();
 
+            int[] x = { 1, 2, 3, 4, 5, 6, 7, 8 };
+            int[] y = { 1, 2, 3, 4, 5, 6, 7, 8 };
+
             while (coords.Count != 2)
             {
-                var generatedCoords = new Coords(Random.Next(1, 10), Random.Next(1, 10)); // generate start coord
+                var generatedCoords = new Coords(Random.Next(0, 9), Random.Next(0, 9));
+             
 
                 if (!Map.MapBlocks[generatedCoords.X, generatedCoords.Y].IsEmpty) continue; // check this coord on map
 
 
-                // check this coord on  extreme values ({1, 1}, {1, 0}, {0, 1}, {0, 0})
-                if (ExtremeValuesCoords.ContainsValue(generatedCoords))
+                if (ExtremeValuesCoords.Contains(generatedCoords))
                 {
                     coords = CheckExtremeValues(generatedCoords);
                 }
 
-                // check this coords on all sides
-                else if (TopSideCoords.ContainsValue(generatedCoords))
+                // check this coord on all sides
+                else if (TopSideCoords.Contains(generatedCoords))
                 {
                     coords = CheckTopSideValues(generatedCoords);
                 }
 
-                else if (BottomSideCoords.ContainsValue(generatedCoords))
+                else if (BottomSideCoords.Contains(generatedCoords))
                 {
                     coords = CheckBottomSideValues(generatedCoords);
                 }
 
-                else if (LeftSideCoords.ContainsValue(generatedCoords))
+                else if (LeftSideCoords.Contains(generatedCoords))
                 {
                     coords = CheckLeftSideValues(generatedCoords);
                 }
 
-                else if (RightSideCoords.ContainsValue(generatedCoords))
+                else if (RightSideCoords.Contains(generatedCoords))
                 {
                     coords = CheckRightSideValues(generatedCoords);
                 }
-                // if all sides not contains this coords
+
+                // if all sides not contains this coord
                 // generate new coord
-                else
+          
+                else if (x.Contains(generatedCoords.X) && y.Contains(generatedCoords.Y))
                 {
                     coords = CheckDefaultSide(generatedCoords);
                 }
 
-                //set property IsEmpty on map to false
-                Map.MapBlocks[coords[0].X, coords[0].Y].IsEmpty = false;
-                Map.MapBlocks[coords[1].X, coords[1].Y].IsEmpty = false;
-            }                                  
+                // set property IsEmpty to false
+            }
+
+            Map.MapBlocks[coords[0].X, coords[0].Y].IsEmpty = false;
+            Map.MapBlocks[coords[1].X, coords[1].Y].IsEmpty = false;
             return coords;
         }
 
@@ -81,7 +88,7 @@ namespace SeaBattle.Engine.Common.CoordsHelper
                          list.Add(coord2);
                         break;
                     case 1:
-                         coord2 = new Coords(coords.X + 1, coords.Y + 1);
+                         coord2 = new Coords(coords.X + 10, coords.Y + 10);
                          list.Add(coord2);
                         break;
                 }
@@ -290,36 +297,30 @@ namespace SeaBattle.Engine.Common.CoordsHelper
                 
             var list = new List<Coords> { coords };
 
-            Coords coord2;
-
             switch (rnd)
             {
                 case 0:
                     if (Map.MapBlocks[coords.X - 1, coords.Y].IsEmpty)
                     {
-                        coord2 = new Coords(coords.X - 1, coords.Y);
-                        list.Add(coord2);
+                        list.Add(new Coords(coords.X - 1, coords.Y));
                     }
                     break;
                 case 1:
                     if (Map.MapBlocks[coords.X, coords.Y - 1].IsEmpty)
                     {
-                        coord2 = new Coords(coords.X, coords.Y - 1);
-                        list.Add(coord2);
+                        list.Add(new Coords(coords.X, coords.Y - 1));
                     }
                     break;
                 case 2:
                     if (Map.MapBlocks[coords.X + 1, coords.Y].IsEmpty)
                     {
-                        coord2 = new Coords(coords.X + 1, coords.Y);
-                        list.Add(coord2);
+                        list.Add(new Coords(coords.X + 1, coords.Y));
                     }
                     break;
                 case 3:
                     if (Map.MapBlocks[coords.X, coords.Y + 1].IsEmpty)
                     {
-                        coord2 = new Coords(coords.X, coords.Y + 1);
-                        list.Add(coord2);
+                        list.Add(new Coords(coords.X, coords.Y + 1));
                     }
                     break;
             }
