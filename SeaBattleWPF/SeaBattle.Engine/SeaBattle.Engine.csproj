@@ -53,11 +53,14 @@
     <Compile Include="Common\CoordsHelper\BaseRandomCoords.cs" />
     <Compile Include="Common\CoordsHelper\GenerateRandomCoordsOneHp.cs" />
     <Compile Include="Common\CoordsHelper\GenerateRandomCoordsTwoHp.cs" />
+    <Compile Include="Ships\FourHpShip.cs" />
     <Compile Include="Ships\OneHpShip.cs" />
     <Compile Include="Ships\ThreeHpShip.cs" />
     <Compile Include="Ships\TwoHpShip.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Network\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
