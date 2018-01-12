@@ -1,13 +1,16 @@
 ﻿using System.Windows;
 using System.Windows.Controls;
+using SeaBattle.Engine.Common.MapLogic;
+using SeaBattle.Engine.Ships;
 
 namespace SeaBattleWPF.GameControls
 {
     /// <summary>
     /// Interaction logic for Field.xaml
     /// </summary>
-    public partial class Field 
+    public partial class Field
     {
+        private int FieldSize { get; set; } = 10;
         public Field()
         {
             InitializeComponent();
@@ -42,14 +45,35 @@ namespace SeaBattleWPF.GameControls
                 SetRow(vh, i + 1);
                 SetColumn(vh, 0);
 
-                for (var y = 0; y < 10; y++)
+                var map = new Map();
+
+
+                map._ships.Add(new TwoHpShip(map));
+                map._ships.Add(new TwoHpShip(map));
+                map._ships.Add(new TwoHpShip(map));
+
+                map._ships.Add(new ThreeHpShip(map)); //need fix this and test "index is out of range"
+
+                for (var y = 0; y < FieldSize; y++)
                 {
-                    for (var x = 0; x < 10; x++)
+                    for (var x = 0; x < FieldSize; x++)
                     {
-                        var cell = new FieldCell(x, y);
-                        Grid.Children.Add(cell.Control);
-                        SetRow(cell.Control, y + 1);
-                        SetColumn(cell.Control, x + 1);                        
+                        if (map.MapBlocks[x, y].State == BlockState.IsBusy)
+                        {
+                            var cell = new FieldCell(BlockState.IsBusy, x, y);
+                            Grid.Children.Add(cell.Control);
+                            SetRow(cell.Control, y + 1);
+                            SetColumn(cell.Control, x + 1);
+                        }
+
+                        else
+                        {
+                            var cell = new FieldCell(BlockState.IsEmpty, x, y);
+                            Grid.Children.Add(cell.Control);
+                            SetRow(cell.Control, y + 1);
+                            SetColumn(cell.Control, x + 1);
+                        }
+                                           
                     }
                 }
             }

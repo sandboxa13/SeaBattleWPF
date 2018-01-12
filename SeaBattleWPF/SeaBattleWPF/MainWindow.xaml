@@ -6,6 +6,7 @@
         xmlns:local="clr-namespace:SeaBattleWPF"
         xmlns:gameControls="clr-namespace:SeaBattleWPF.GameControls"
         mc:Ignorable="d"
+        WindowState="Maximized"
         Title="MainWindow" Height="350" Width="525">
     <Grid>
         <Grid.ColumnDefinitions>

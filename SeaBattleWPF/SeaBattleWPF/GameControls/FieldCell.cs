@@ -1,6 +1,8 @@
 ﻿using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
+using SeaBattle.Engine.Common.MapLogic;
+using UserControl = System.Windows.Controls.UserControl;
 
 namespace SeaBattleWPF.GameControls
 {
@@ -10,21 +12,38 @@ namespace SeaBattleWPF.GameControls
 
         public int Y { get; set; }
 
+        public BlockState State;
+
         public UserControl Control { get; set; }
 
-        public FieldCell(int x, int y)
+        public FieldCell(BlockState state, int x, int y)
         {
             X = x;
             Y = y;
+            State = state;
 
-            Control = new UserControl()
+            if (State == BlockState.IsBusy)
             {
-                HorizontalAlignment = HorizontalAlignment.Stretch,
-                VerticalAlignment = VerticalAlignment.Stretch,
-                BorderThickness = new Thickness(1.0),
-                Background = Brushes.CornflowerBlue,
-                BorderBrush = Brushes.Transparent
-            };
+                Control = new UserControl()
+                {
+                    HorizontalAlignment = HorizontalAlignment.Stretch,
+                    VerticalAlignment = VerticalAlignment.Stretch,
+                    BorderThickness = new Thickness(1.0),
+                    Background = Brushes.Black,
+                    BorderBrush = Brushes.Transparent
+                };
+            }
+            else
+            {
+                Control = new UserControl()
+                {
+                    HorizontalAlignment = HorizontalAlignment.Stretch,
+                    VerticalAlignment = VerticalAlignment.Stretch,
+                    BorderThickness = new Thickness(1.0),
+                    Background = Brushes.CornflowerBlue,
+                    BorderBrush = Brushes.Transparent
+                };
+            }          
         }
     }
 }
