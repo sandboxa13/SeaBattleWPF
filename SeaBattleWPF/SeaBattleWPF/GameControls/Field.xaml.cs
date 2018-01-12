@@ -10,13 +10,13 @@ namespace SeaBattleWPF.GameControls
     /// </summary>
     public partial class Field
     {
-        private int FieldSize { get; set; } = 10;
+        private int FieldSize { get; } = 10;
         public Field()
         {
             InitializeComponent();
 
-            Grid.RowDefinitions.Add(new RowDefinition() { Height = new GridLength(0, GridUnitType.Auto) });
-            Grid.ColumnDefinitions.Add(new ColumnDefinition() { Width = new GridLength(0, GridUnitType.Auto) });
+            Grid.RowDefinitions.Add(new RowDefinition { Height = new GridLength(0, GridUnitType.Auto) });
+            Grid.ColumnDefinitions.Add(new ColumnDefinition { Width = new GridLength(0, GridUnitType.Auto) });
 
             for (var i = 0; i < 10; i++)
             {
@@ -48,11 +48,14 @@ namespace SeaBattleWPF.GameControls
                 var map = new Map();
 
 
-                map._ships.Add(new TwoHpShip(map));
-                map._ships.Add(new TwoHpShip(map));
-                map._ships.Add(new TwoHpShip(map));
+                map._ships.Add(new OneHpShip(map));
+                map._ships.Add(new OneHpShip(map));
+                map._ships.Add(new OneHpShip(map));
+                map._ships.Add(new OneHpShip(map));
+                map._ships.Add(new OneHpShip(map));
+                map._ships.Add(new OneHpShip(map));
 
-                map._ships.Add(new ThreeHpShip(map)); //need fix this and test "index is out of range"
+                // map._ships.Add(new ThreeHpShip(map)); need fix this and test "index out of range exception"
 
                 for (var y = 0; y < FieldSize; y++)
                 {
@@ -72,8 +75,7 @@ namespace SeaBattleWPF.GameControls
                             Grid.Children.Add(cell.Control);
                             SetRow(cell.Control, y + 1);
                             SetColumn(cell.Control, x + 1);
-                        }
-                                           
+                        }                                          
                     }
                 }
             }
