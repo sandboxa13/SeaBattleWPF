@@ -23,7 +23,7 @@ namespace SeaBattleWPF.GameControls
                 Grid.RowDefinitions.Add(new RowDefinition());
                 Grid.ColumnDefinitions.Add(new ColumnDefinition());
 
-                var hh = new UserControl()
+                var hh = new UserControl
                 {
                     Content = ((char)('A' + i)).ToString(),
                     HorizontalAlignment = HorizontalAlignment.Center,
@@ -34,7 +34,7 @@ namespace SeaBattleWPF.GameControls
                 SetRow(hh, 0);
                 SetColumn(hh, i + 1);
 
-                var vh = new UserControl()
+                var vh = new UserControl
                 {
                     Content = (i + 1).ToString(),
                     HorizontalAlignment = HorizontalAlignment.Center,
@@ -47,13 +47,10 @@ namespace SeaBattleWPF.GameControls
 
                 var map = new Map();
 
+                map._ships.Add(new TwoHpShip(map));
+                map._ships.Add(new TwoHpShip(map));
+                map._ships.Add(new TwoHpShip(map));
 
-                map._ships.Add(new OneHpShip(map));
-                map._ships.Add(new OneHpShip(map));
-                map._ships.Add(new OneHpShip(map));
-                map._ships.Add(new OneHpShip(map));
-                map._ships.Add(new OneHpShip(map));
-                map._ships.Add(new OneHpShip(map));
 
                 // map._ships.Add(new ThreeHpShip(map)); need fix this and test "index out of range exception"
 

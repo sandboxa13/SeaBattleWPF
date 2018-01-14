@@ -24,7 +24,7 @@ namespace SeaBattleWPF.GameControls
 
             if (State == BlockState.IsBusy)
             {
-                Control = new UserControl()
+                Control = new UserControl
                 {
                     HorizontalAlignment = HorizontalAlignment.Stretch,
                     VerticalAlignment = VerticalAlignment.Stretch,
@@ -35,7 +35,7 @@ namespace SeaBattleWPF.GameControls
             }
             else
             {
-                Control = new UserControl()
+                Control = new UserControl
                 {
                     HorizontalAlignment = HorizontalAlignment.Stretch,
                     VerticalAlignment = VerticalAlignment.Stretch,

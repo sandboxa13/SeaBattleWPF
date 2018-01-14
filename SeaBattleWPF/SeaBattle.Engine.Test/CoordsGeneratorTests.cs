@@ -49,8 +49,7 @@ namespace SeaBattle.Engine.Test
             Assert.That(y2, Is.InRange(0, 9));
         }
 
-        [Test]
-        [Repeat(100)]
+
         public void Three_Hp_Generator_Coords_Test()
         {
             _map = new Map();
