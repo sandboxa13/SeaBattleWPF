@@ -53,6 +53,7 @@ namespace SeaBattle.Engine.Common.CoordsHelper
                 else if (RightSideCoords.Contains(generatedCoords))
                 {
                     coords = CheckRightSideValues(generatedCoords);
+                    var t = new Map();
                 }
 
                 // if all sides not contains this coord
@@ -63,7 +64,6 @@ namespace SeaBattle.Engine.Common.CoordsHelper
                     coords = CheckDefaultSide(generatedCoords);
                 }
 
-                // set property IsEmpty to false
             }
 
             Map.MapBlocks[coords[0].X, coords[0].Y].State = BlockState.IsBusy;
@@ -83,10 +83,10 @@ namespace SeaBattle.Engine.Common.CoordsHelper
                 switch (rnd)
                 {
                     case 0:
-                         list.Add(new Coords(coords.X + 1, coords.Y + 1));
+                        list.Add(new Coords(coords.X + 1, coords.Y + 1));
                         break;
                     case 1:
-                         list.Add(new Coords(coords.X + 10, coords.Y + 10));
+                        list.Add(new Coords(coords.X + 10, coords.Y + 10));
                         break;
                 }
             }
