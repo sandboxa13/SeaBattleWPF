@@ -50,6 +50,8 @@ namespace SeaBattle.Engine.Test
         }
 
 
+        [Test]
+        [Repeat(50000)]
         public void Three_Hp_Generator_Coords_Test()
         {
             _map = new Map();

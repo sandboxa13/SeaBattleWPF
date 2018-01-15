@@ -14,101 +14,74 @@ namespace SeaBattle.Engine.Common.CoordsHelper
         {
             var coords = new List<Coords>();
 
-            var rnd = new Random();
-
-            var number = rnd.Next(0, 3);
+            var number = Random.Next(0, 3);
 
             while (coords.Count != 3)
             {
-                var generatedcoords = new GenerateRandomCoordsTwoHp(Map).GenerateCoords();
+                var generatedcoords = new List<Coords>
+                {
+                    new Coords(Random.Next(2, 7), Random.Next(2, 7))
+                };
+                
+                if(Map.MapBlocks[generatedcoords[0].X, generatedcoords[0].Y].State == BlockState.IsBusy) continue;
 
                 switch (number)
                 {
                     case 0:
-                        if (CheckOnNullPlusX(generatedcoords) && CheckOnBusyPlusX(generatedcoords) )
+                        if (Map.MapBlocks[generatedcoords[0].X + 1, generatedcoords[0].Y].State == BlockState.IsEmpty)
                         {
-                            generatedcoords.Add(new Coords(generatedcoords[1].X + 1, generatedcoords[1].Y));
+                            if (Map.MapBlocks[generatedcoords[0].X + 2, generatedcoords[0].Y].State == BlockState.IsEmpty)
+                            {
+                                coords.Add(new Coords(generatedcoords[0].X, generatedcoords[0].Y));
+                                coords.Add(new Coords(generatedcoords[0].X + 1, generatedcoords[0].Y));
+                                coords.Add(new Coords(generatedcoords[0].X + 2, generatedcoords[0].Y));                                
+                            }  
                         }
                         break;
 
                     case 1:
-                        if (CheckOnNullPlusY(generatedcoords) && CheckOnBusyPlusY(generatedcoords))
+                        if (Map.MapBlocks[generatedcoords[0].X - 1, generatedcoords[0].Y].State == BlockState.IsEmpty)
                         {
-                            generatedcoords.Add(new Coords(generatedcoords[1].X, generatedcoords[1].Y + 1));
+                            if (Map.MapBlocks[generatedcoords[0].X - 2, generatedcoords[0].Y].State == BlockState.IsEmpty)
+                            {
+                                coords.Add(new Coords(generatedcoords[0].X, generatedcoords[0].Y));
+                                coords.Add(new Coords(generatedcoords[0].X - 1, generatedcoords[0].Y));
+                                coords.Add(new Coords(generatedcoords[0].X - 2, generatedcoords[0].Y));
+                            }  
                         }
                         break;
 
                     case 2:
-                        if ( CheckOnNullMinusX(generatedcoords) && CheckOnBusyMinusX(generatedcoords))
+                        if (Map.MapBlocks[generatedcoords[0].X, generatedcoords[0].Y + 1].State == BlockState.IsEmpty)
                         {
-                            generatedcoords.Add(new Coords(generatedcoords[1].X - 1, generatedcoords[1].Y));
+                            if (Map.MapBlocks[generatedcoords[0].X, generatedcoords[0].Y + 2].State == BlockState.IsEmpty)
+                            {
+                                coords.Add(new Coords(generatedcoords[0].X, generatedcoords[0].Y));
+                                coords.Add(new Coords(generatedcoords[0].X, generatedcoords[0].Y + 1));
+                                coords.Add(new Coords(generatedcoords[0].X, generatedcoords[0].Y + 2));
+                            }  
                         }
                         break;
 
                     case 3:
-                        if (CheckOnNullMinusY(generatedcoords) && CheckOnBusyMinusY(generatedcoords))
+                        if (Map.MapBlocks[generatedcoords[0].X, generatedcoords[0].Y - 1].State == BlockState.IsEmpty)
                         {
-                            generatedcoords.Add(new Coords(generatedcoords[1].X, generatedcoords[1].Y - 1));
+                            if (Map.MapBlocks[generatedcoords[0].X, generatedcoords[0].Y - 2].State == BlockState.IsEmpty)
+                            {
+                                coords.Add(new Coords(generatedcoords[0].X, generatedcoords[0].Y));
+                                coords.Add(new Coords(generatedcoords[0].X, generatedcoords[0].Y - 1));
+                                coords.Add(new Coords(generatedcoords[0].X, generatedcoords[0].Y - 2));
+                            }  
                         }
                         break;
                 }
-                coords.AddRange(generatedcoords);
             }
+            
+            Map.MapBlocks[coords[0].X, coords[0].Y].State = BlockState.IsBusy;
+            Map.MapBlocks[coords[1].X, coords[1].Y].State = BlockState.IsBusy;
             Map.MapBlocks[coords[2].X, coords[2].Y].State = BlockState.IsBusy;
 
             return coords;
         }
-
-        #region PlusX
-        private bool CheckOnNullPlusX(IReadOnlyList<Coords> generatedcoords)
-        {
-            return Map.MapBlocks[generatedcoords[1].X + 1, generatedcoords[1].Y] != null;
-        }
-
-        private bool CheckOnBusyPlusX(IReadOnlyList<Coords> generatedcoords)
-        {
-            return Map.MapBlocks[generatedcoords[1].X + 1, generatedcoords[1].Y].State == BlockState.IsEmpty;
-        }
-        #endregion
-
-        #region PlusY
-
-        private bool CheckOnNullPlusY(IReadOnlyList<Coords> generatedcoords)
-        {
-            return Map.MapBlocks[generatedcoords[1].X, generatedcoords[1].Y + 1] != null;
-        }
-
-        private bool CheckOnBusyPlusY(IReadOnlyList<Coords> generatedcoords)
-        {
-            return Map.MapBlocks[generatedcoords[1].X, generatedcoords[1].Y + 1].State == BlockState.IsEmpty;
-        }
-
-        #endregion
-
-        #region MinusY
-
-        private bool CheckOnNullMinusY(IReadOnlyList<Coords> generatedcoords)
-        {
-            return Map.MapBlocks[generatedcoords[1].X, generatedcoords[1].Y - 1] != null;
-        }
-
-        private bool CheckOnBusyMinusY(IReadOnlyList<Coords> generatedcoords)
-        {
-            return Map.MapBlocks[generatedcoords[1].X, generatedcoords[1].Y - 1].State == BlockState.IsEmpty;
-        }
-
-        #endregion
-
-        #region MinusX
-        private bool CheckOnNullMinusX(IReadOnlyList<Coords> generatedcoords)
-        {
-            return Map.MapBlocks[generatedcoords[1].X - 1, generatedcoords[1].Y] != null;
-        }
-
-        private bool CheckOnBusyMinusX(IReadOnlyList<Coords> generatedcoords)
-        {
-            return Map.MapBlocks[generatedcoords[1].X - 1, generatedcoords[1].Y].State == BlockState.IsEmpty;
-        }
-        #endregion
     }
 }

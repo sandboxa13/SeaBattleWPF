@@ -66,6 +66,7 @@ namespace SeaBattle.Engine.Common.CoordsHelper
         public BaseRandomCoords(Map map)
         {
             Map = map;
+            Random = new Random();
         }
         public virtual List<Coords> GenerateCoords()
         {
