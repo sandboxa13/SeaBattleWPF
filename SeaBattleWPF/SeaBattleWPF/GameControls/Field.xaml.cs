@@ -47,32 +47,37 @@ namespace SeaBattleWPF.GameControls
 
                 var map = new Map();
 
-                map._ships.Add(new ThreeHpShip(map));
-                map._ships.Add(new ThreeHpShip(map));
-               
+                map._ships.Add(new OneHpShip(map));
+                map._ships.Add(new OneHpShip(map));
 
 
-                // map._ships.Add(new ThreeHpShip(map)); need fix this and test "index out of range exception"
+                map._ships.Add(new ThreeHpShip(map));
+                map._ships.Add(new ThreeHpShip(map));
+
 
                 for (var y = 0; y < FieldSize; y++)
                 {
                     for (var x = 0; x < FieldSize; x++)
                     {
-                        if (map.MapBlocks[x, y].State == BlockState.IsBusy)
+                        switch (map.MapBlocks[x, y].State)
                         {
-                            var cell = new FieldCell(BlockState.IsBusy, x, y);
-                            Grid.Children.Add(cell.Control);
-                            SetRow(cell.Control, y + 1);
-                            SetColumn(cell.Control, x + 1);
+                            case BlockState.IsShip:
+                            {
+                                var cell = new FieldCell(BlockState.IsShip, x, y);
+                                Grid.Children.Add(cell.Control);
+                                SetRow(cell.Control, y + 1);
+                                SetColumn(cell.Control, x + 1);
+                                break;
+                            }
+                            default:
+                            {
+                                var cell = new FieldCell(BlockState.IsEmpty, x, y);
+                                Grid.Children.Add(cell.Control);
+                                SetRow(cell.Control, y + 1);
+                                SetColumn(cell.Control, x + 1);
+                                break;
+                            }
                         }
-
-                        else
-                        {
-                            var cell = new FieldCell(BlockState.IsEmpty, x, y);
-                            Grid.Children.Add(cell.Control);
-                            SetRow(cell.Control, y + 1);
-                            SetColumn(cell.Control, x + 1);
-                        }                                          
                     }
                 }
             }

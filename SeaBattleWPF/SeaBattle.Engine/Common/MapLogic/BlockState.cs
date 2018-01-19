@@ -8,7 +8,7 @@
 
         IsShooted = 2,  
 
-
+        IsShip = 3
 
     }
 }

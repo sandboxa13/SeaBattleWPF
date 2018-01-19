@@ -7,6 +7,7 @@ namespace SeaBattle.Engine.Test
     public class GenerateMapTests
     {
         [Test]
+        [Repeat(1000)]
         public void Generate_Map_Test()
         {
             var map = new Map();

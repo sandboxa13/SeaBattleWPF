@@ -22,27 +22,28 @@ namespace SeaBattleWPF.GameControls
             Y = y;
             State = state;
 
-            if (State == BlockState.IsBusy)
+            switch (State)
             {
-                Control = new UserControl
-                {
-                    HorizontalAlignment = HorizontalAlignment.Stretch,
-                    VerticalAlignment = VerticalAlignment.Stretch,
-                    BorderThickness = new Thickness(1.0),
-                    Background = Brushes.Black,
-                    BorderBrush = Brushes.Transparent
-                };
-            }
-            else
-            {
-                Control = new UserControl
-                {
-                    HorizontalAlignment = HorizontalAlignment.Stretch,
-                    VerticalAlignment = VerticalAlignment.Stretch,
-                    BorderThickness = new Thickness(1.0),
-                    Background = Brushes.CornflowerBlue,
-                    BorderBrush = Brushes.Transparent
-                };
+                case BlockState.IsShip:
+                    Control = new UserControl
+                    {
+                        HorizontalAlignment = HorizontalAlignment.Stretch,
+                        VerticalAlignment = VerticalAlignment.Stretch,
+                        BorderThickness = new Thickness(1.0),
+                        Background = Brushes.Red,
+                        BorderBrush = Brushes.Transparent
+                    };
+                    break;
+                default:
+                    Control = new UserControl
+                    {
+                        HorizontalAlignment = HorizontalAlignment.Stretch,
+                        VerticalAlignment = VerticalAlignment.Stretch,
+                        BorderThickness = new Thickness(1.0),
+                        Background = Brushes.CornflowerBlue,
+                        BorderBrush = Brushes.Transparent
+                    };
+                    break;
             }          
         }
     }

@@ -12,7 +12,7 @@ namespace SeaBattle.Engine.Test
         private Map _map;
 
         [Test]
-        [Repeat(50000)]
+        [Repeat(1000)]
         public void One_Hp_Generator_Coords_Test()
         {
             _map = new Map();
@@ -26,9 +26,11 @@ namespace SeaBattle.Engine.Test
             Assert.That(x, Is.InRange(0, 9));
             Assert.That(y, Is.InRange(0, 9));
         }
-            
+
+       
+
         [Test]
-        [Repeat(50000)]
+        [Repeat(1000)]
         public void Two_Hp_Generator_Coords_Test()
         {
             _map = new Map();
@@ -51,7 +53,7 @@ namespace SeaBattle.Engine.Test
 
 
         [Test]
-        [Repeat(50000)]
+        [Repeat(1000)]
         public void Three_Hp_Generator_Coords_Test()
         {
             _map = new Map();

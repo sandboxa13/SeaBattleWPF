@@ -10,6 +10,8 @@ namespace SeaBattle.Engine.Ships
         public int Hp { get; set; }
 
         public List<Coords> Coords;
+
+        public ShipsEnum ShipsEnum;
             
         protected IGenerateRandomCoords RandomCoords;
 

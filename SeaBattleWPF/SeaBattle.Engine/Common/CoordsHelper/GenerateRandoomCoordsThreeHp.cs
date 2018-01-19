@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Threading;
 using SeaBattle.Engine.Common.MapLogic;
 
 namespace SeaBattle.Engine.Common.CoordsHelper
@@ -14,10 +15,16 @@ namespace SeaBattle.Engine.Common.CoordsHelper
         {
             var coords = new List<Coords>();
 
+
+            Thread.Sleep(20);
+
+            Random = new Random();
             var number = Random.Next(0, 3);
 
             while (coords.Count != 3)
             {
+                Thread.Sleep(20);
+
                 var generatedcoords = new List<Coords>
                 {
                     new Coords(Random.Next(2, 7), Random.Next(2, 7))
@@ -77,9 +84,9 @@ namespace SeaBattle.Engine.Common.CoordsHelper
                 }
             }
             
-            Map.MapBlocks[coords[0].X, coords[0].Y].State = BlockState.IsBusy;
-            Map.MapBlocks[coords[1].X, coords[1].Y].State = BlockState.IsBusy;
-            Map.MapBlocks[coords[2].X, coords[2].Y].State = BlockState.IsBusy;
+            Map.MapBlocks[coords[0].X, coords[0].Y].State = BlockState.IsShip;
+            Map.MapBlocks[coords[1].X, coords[1].Y].State = BlockState.IsShip;
+            Map.MapBlocks[coords[2].X, coords[2].Y].State = BlockState.IsShip;
 
             return coords;
         }

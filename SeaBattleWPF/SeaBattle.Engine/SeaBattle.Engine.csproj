@@ -40,6 +40,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Common\CoordsHelper\GenerateRandomCoordsFourHp.cs" />
     <Compile Include="Common\CoordsHelper\GenerateRandoomCoordsThreeHp.cs" />
     <Compile Include="Common\GameTest.cs" />
     <Compile Include="Common\MapLogic\Block.cs" />
@@ -55,6 +56,7 @@
     <Compile Include="Common\CoordsHelper\GenerateRandomCoordsTwoHp.cs" />
     <Compile Include="Ships\FourHpShip.cs" />
     <Compile Include="Ships\OneHpShip.cs" />
+    <Compile Include="Ships\ShipsEnum.cs" />
     <Compile Include="Ships\ThreeHpShip.cs" />
     <Compile Include="Ships\TwoHpShip.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

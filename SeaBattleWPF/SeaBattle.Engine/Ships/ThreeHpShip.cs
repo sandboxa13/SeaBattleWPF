@@ -12,6 +12,8 @@ namespace SeaBattle.Engine.Ships
             RandomCoords = new GenerateRandoomCoordsThreeHp(map); //set generator of random coords for 3hp ship
 
             Coords = RandomCoords.GenerateCoords(); // set random coords
+
+            ShipsEnum = ShipsEnum.ThreeHp;
         }
     }
 }
