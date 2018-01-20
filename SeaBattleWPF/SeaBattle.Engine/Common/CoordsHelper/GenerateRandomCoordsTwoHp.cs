@@ -23,9 +23,7 @@ namespace SeaBattle.Engine.Common.CoordsHelper
             {
                 var generatedCoords = new Coords(Random.Next(1, 8), Random.Next(1, 8));
 
-                if (Map.MapBlocks[generatedCoords.X, generatedCoords.Y].State == BlockState.IsBusy) continue;
-
-                coords.Add(generatedCoords);
+                if (Map.MapBlocks[generatedCoords.X, generatedCoords.Y].State == BlockState.IsShip) continue;
 
                 var rnd = Random.Next(0, 3);
 
@@ -35,8 +33,8 @@ namespace SeaBattle.Engine.Common.CoordsHelper
 
                         if (Map.MapBlocks[generatedCoords.X + 1, generatedCoords.Y].State == BlockState.IsEmpty)
                         {
-                            coords.Add(new Coords(generatedCoords.X + 1, generatedCoords.Y));
-                            
+                            coords.Add(generatedCoords);
+                            coords.Add(new Coords(generatedCoords.X + 1, generatedCoords.Y));                       
                         }
                         break;
 
@@ -44,6 +42,7 @@ namespace SeaBattle.Engine.Common.CoordsHelper
 
                         if (Map.MapBlocks[generatedCoords.X - 1, generatedCoords.Y].State == BlockState.IsEmpty)
                         {
+                            coords.Add(generatedCoords);
                             coords.Add(new Coords(generatedCoords.X - 1, generatedCoords.Y));
                         }
                         break;
@@ -52,6 +51,7 @@ namespace SeaBattle.Engine.Common.CoordsHelper
 
                         if (Map.MapBlocks[generatedCoords.X, generatedCoords.Y - 1].State == BlockState.IsEmpty)
                         {
+                            coords.Add(generatedCoords);
                             coords.Add(new Coords(generatedCoords.X, generatedCoords.Y - 1));
                         }
                         break;
@@ -60,14 +60,15 @@ namespace SeaBattle.Engine.Common.CoordsHelper
 
                         if (Map.MapBlocks[generatedCoords.X, generatedCoords.Y + 1].State == BlockState.IsEmpty)
                         {
+                            coords.Add(generatedCoords);
                             coords.Add(new Coords(generatedCoords.X, generatedCoords.Y + 1));
                         }
                         break;
                 }
             }
 
-            Map.MapBlocks[coords[0].X, coords[0].Y].State = BlockState.IsBusy;
-            Map.MapBlocks[coords[1].X, coords[1].Y].State = BlockState.IsBusy;
+            Map.MapBlocks[coords[0].X, coords[0].Y].State = BlockState.IsShip;
+            Map.MapBlocks[coords[1].X, coords[1].Y].State = BlockState.IsShip;
 
             return coords;
         }

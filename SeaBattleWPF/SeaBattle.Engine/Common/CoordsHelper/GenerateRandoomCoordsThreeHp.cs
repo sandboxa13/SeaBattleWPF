@@ -30,7 +30,7 @@ namespace SeaBattle.Engine.Common.CoordsHelper
                     new Coords(Random.Next(2, 7), Random.Next(2, 7))
                 };
                 
-                if(Map.MapBlocks[generatedcoords[0].X, generatedcoords[0].Y].State == BlockState.IsBusy) continue;
+                if(Map.MapBlocks[generatedcoords[0].X, generatedcoords[0].Y].State == BlockState.IsShip) continue;
 
                 switch (number)
                 {
