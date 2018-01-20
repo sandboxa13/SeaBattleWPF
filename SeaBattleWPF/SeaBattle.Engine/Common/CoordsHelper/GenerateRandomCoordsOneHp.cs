@@ -9,23 +9,20 @@ namespace SeaBattle.Engine.Common.CoordsHelper
     {
         public GenerateRandomCoordsOneHp(Map map) : base(map)
         {
-            Random = new Random((int)DateTime.Now.Ticks);
-
+            Random = new Random();
         }
 
         public override List<Coords> GenerateCoords()
         {
             var coords = new List<Coords>();
 
-
-
             while (coords.Count == 0)
             {
                 Thread.Sleep(20);
 
-                var generatedCoords = new Coords(Random.Next(1, 8), Random.Next(1, 8));
+                var generatedCoords = new Coords(Random.Next(0, 9), Random.Next(0, 9));
 
-                if (Map.MapBlocks[generatedCoords.X, generatedCoords.Y].State == BlockState.IsBusy) continue;
+                if (Map.MapBlocks[generatedCoords.X, generatedCoords.Y].State == BlockState.IsShip) continue;
 
                 Map.MapBlocks[generatedCoords.X, generatedCoords.Y].State = BlockState.IsShip;
 

@@ -49,7 +49,12 @@ namespace SeaBattleWPF.GameControls
 
                 map._ships.Add(new OneHpShip(map));
                 map._ships.Add(new OneHpShip(map));
+                map._ships.Add(new OneHpShip(map));
+                map._ships.Add(new OneHpShip(map));
 
+                map._ships.Add(new TwoHpShip(map));
+                map._ships.Add(new TwoHpShip(map));
+                map._ships.Add(new TwoHpShip(map));
 
                 map._ships.Add(new ThreeHpShip(map));
                 map._ships.Add(new ThreeHpShip(map));
