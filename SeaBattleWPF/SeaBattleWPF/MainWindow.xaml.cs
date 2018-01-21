@@ -28,7 +28,6 @@ namespace SeaBattleWPF
 
         private void CheckOnShoot(FieldCell cell)
         {
-
             if (Computer.Map.MapBlocks[cell.X, cell.Y].X == cell.X && Computer.Map.MapBlocks[cell.X, cell.Y].Y == cell.Y && Computer.Map.MapBlocks[cell.X, cell.Y].State == SeaBattle.Engine.Common.MapLogic.BlockState.IsShip)
             {
                 Computer.fieldCell[cell.X, cell.Y].Control.Background = Brushes.Black;
