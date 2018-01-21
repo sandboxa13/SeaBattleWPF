@@ -66,6 +66,7 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="GameControls\BattleFieldCellEventArgs.cs" />
     <Compile Include="GameControls\ColorsCollection.cs" />
     <Compile Include="GameControls\Field.xaml.cs">
       <DependentUpon>Field.xaml</DependentUpon>

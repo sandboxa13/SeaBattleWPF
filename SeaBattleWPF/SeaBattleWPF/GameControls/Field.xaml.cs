@@ -1,34 +1,17 @@
 ﻿using System;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Input;
 using SeaBattle.Engine.Common.MapLogic;
 using SeaBattle.Engine.Ships;
 
 namespace SeaBattleWPF.GameControls
 {
-    /// <summary>
-    /// Interaction logic for Field.xaml
-    /// </summary>
-    /// 
-    public class BattleFieldCellEventArgs : System.EventArgs
-    {
-        public FieldCell Cell { get; private set; }
-        public MouseEventArgs MouseInfo { get; private set; }
-
-        public MouseButton? Button { get; private set; }
-
-        public BattleFieldCellEventArgs(FieldCell cell, MouseEventArgs mouseInfo)
-        {
-            Cell = cell;
-            MouseInfo = mouseInfo;
-            Button = (mouseInfo is MouseButtonEventArgs) ? (mouseInfo as MouseButtonEventArgs).ChangedButton : (MouseButton?)null;
-        }
-    }
-
     public partial class Field
     {
+        public Map Map; 
+        public FieldCell[,] fieldCell;
         private int FieldSize { get; } = 10;
+
 
         public event EventHandler<BattleFieldCellEventArgs> OnBattleFieldCellMouseUp = delegate { };
         public event EventHandler<BattleFieldCellEventArgs> OnBattleFieldCellMouseEnter = delegate { };
@@ -41,10 +24,26 @@ namespace SeaBattleWPF.GameControls
             Grid.RowDefinitions.Add(new RowDefinition { Height = new GridLength(0, GridUnitType.Auto) });
             Grid.ColumnDefinitions.Add(new ColumnDefinition { Width = new GridLength(0, GridUnitType.Auto) });
 
-            OnBattleFieldCellMouseEnter += Field_OnBattleFieldCellMouseEnter;
-            OnBattleFieldCellMouseLeave += Field_OnBattleFieldCellMouseLeave;
-            OnBattleFieldCellMouseUp += Field_OnBattleFieldCellMouseUp;
+            fieldCell = new FieldCell[10, 10];
+            Map = new Map();
 
+            Map._ships.Add(new ThreeHpShip(Map));
+            Map._ships.Add(new ThreeHpShip(Map));
+
+            Map._ships.Add(new TwoHpShip(Map));
+            Map._ships.Add(new TwoHpShip(Map));
+            Map._ships.Add(new TwoHpShip(Map));
+
+            Map._ships.Add(new OneHpShip(Map));
+            Map._ships.Add(new OneHpShip(Map));
+            Map._ships.Add(new OneHpShip(Map));
+            Map._ships.Add(new OneHpShip(Map));
+
+            Draw();
+        }
+
+        public void Draw()
+        {
             for (var i = 0; i < 10; i++)
             {
                 Grid.RowDefinitions.Add(new RowDefinition());
@@ -72,25 +71,11 @@ namespace SeaBattleWPF.GameControls
                 SetRow(vh, i + 1);
                 SetColumn(vh, 0);
 
-                var map = new Map();
-
-                map._ships.Add(new ThreeHpShip(map));
-                map._ships.Add(new ThreeHpShip(map));
-
-                map._ships.Add(new TwoHpShip(map));
-                map._ships.Add(new TwoHpShip(map));
-                map._ships.Add(new TwoHpShip(map));
-
-                map._ships.Add(new OneHpShip(map));
-                map._ships.Add(new OneHpShip(map));
-                map._ships.Add(new OneHpShip(map));
-                map._ships.Add(new OneHpShip(map));
-
                 for (var y = 0; y < FieldSize; y++)
                 {
                     for (var x = 0; x < FieldSize; x++)
                     {
-                        switch (map.MapBlocks[x, y].State)
+                        switch (Map.MapBlocks[x, y].State)
                         {
                             case BlockState.IsShip:
                                 {
@@ -98,6 +83,8 @@ namespace SeaBattleWPF.GameControls
                                     Grid.Children.Add(cell.Control);
                                     SetRow(cell.Control, y + 1);
                                     SetColumn(cell.Control, x + 1);
+
+                                    fieldCell[x, y] = cell;
 
                                     cell.Control.PreviewMouseDown += (sender, ea) => ea.Handled = true;
                                     cell.Control.MouseUp += (sender, ea) => OnBattleFieldCellMouseUp(this, new BattleFieldCellEventArgs(cell, ea));
@@ -112,6 +99,8 @@ namespace SeaBattleWPF.GameControls
                                     SetRow(cell.Control, y + 1);
                                     SetColumn(cell.Control, x + 1);
 
+                                    fieldCell[x, y] = cell;
+
                                     cell.Control.PreviewMouseDown += (sender, ea) => ea.Handled = true;
                                     cell.Control.MouseUp += (sender, ea) => OnBattleFieldCellMouseUp(this, new BattleFieldCellEventArgs(cell, ea));
                                     cell.Control.MouseEnter += (sender, ea) => OnBattleFieldCellMouseEnter(this, new BattleFieldCellEventArgs(cell, ea));
@@ -124,23 +113,7 @@ namespace SeaBattleWPF.GameControls
             }
         }
 
-        private void Field_OnBattleFieldCellMouseUp(object sender, BattleFieldCellEventArgs e)
-        {
-            MessageBox.Show("x - " + e.Cell.X + " y - " + e.Cell.Y);
-
-            MessageBox.Show("state - " + e.Cell.State);
-        }
-
-        private void Field_OnBattleFieldCellMouseLeave(object sender, BattleFieldCellEventArgs e)
-        {
-        }
-
-        private void Field_OnBattleFieldCellMouseEnter(object sender, BattleFieldCellEventArgs e)
-        {
-            
-        }
-
-        #region BattleFieldColorsCollection Colors
+        #region FieldColorsCollection Colors
 
         public ColorsCollection Colors
         {
@@ -153,7 +126,7 @@ namespace SeaBattleWPF.GameControls
 
         #endregion
 
-        #region BattleFieldColorsCollection BorderColors
+        #region FieldColorsCollection BorderColors
 
         public ColorsCollection BorderColors
         {

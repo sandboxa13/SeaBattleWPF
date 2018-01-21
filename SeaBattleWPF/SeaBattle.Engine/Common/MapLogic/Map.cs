@@ -17,7 +17,7 @@ namespace SeaBattle.Engine.Common.MapLogic
             {
                 for (var i = 0; i < 10; i++)
                 {
-                    MapBlocks[j, i] = new Block();
+                    MapBlocks[j, i] = new Block(j, i);
                 }
             }
         }

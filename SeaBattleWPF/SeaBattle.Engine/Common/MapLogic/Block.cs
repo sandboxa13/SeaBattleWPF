@@ -4,8 +4,15 @@
     {
         public BlockState State;
 
-        public Block()  
+        public int X { get; set; }
+
+
+        public int Y { get; set; }
+
+        public Block(int x, int y)  
         {
+            X = x;
+            Y = y;
             State = BlockState.IsEmpty;
         }
     }
