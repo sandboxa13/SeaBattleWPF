@@ -1,12 +1,23 @@
-﻿<Grid x:Class="SeaBattleWPF.GameControls.Field"
+﻿<UserControl x:Class="SeaBattleWPF.GameControls.Field"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
-             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-             xmlns:local="clr-namespace:SeaBattleWPF.GameControls"
-             mc:Ignorable="d" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             mc:Ignorable="d"     
+             xmlns:local="clr-namespace:SeaBattleWPF.ViewModels"
              d:DesignHeight="500" d:DesignWidth="500">
-    <Grid Name="Grid">
-            
+
+
+    <UserControl.Resources>
+        <local:FieldViewModel x:Key="Locator" />
+    </UserControl.Resources>
+
+    <UserControl.DataContext>
+        <Binding Path="MaterialsNewView" Source="{StaticResource Locator}" />
+    </UserControl.DataContext>
+
+    <Grid Name="Grid" >
+
     </Grid>
-</Grid>
+
+</UserControl>

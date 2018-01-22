@@ -8,7 +8,7 @@ namespace SeaBattleWPF.GameControls
 {
     public partial class Field
     {
-        public Map Map; 
+        public Map Map;
         public FieldCell[,] fieldCell;
         private int FieldSize { get; } = 10;
 
@@ -57,8 +57,8 @@ namespace SeaBattleWPF.GameControls
                 };
 
                 Grid.Children.Add(hh);
-                SetRow(hh, 0);
-                SetColumn(hh, i + 1);
+                Grid.SetRow(hh, 0);
+                Grid.SetColumn(hh, i + 1);
 
                 var vh = new UserControl
                 {
@@ -68,8 +68,8 @@ namespace SeaBattleWPF.GameControls
                 };
 
                 Grid.Children.Add(vh);
-                SetRow(vh, i + 1);
-                SetColumn(vh, 0);
+                Grid.SetRow(vh, i + 1);
+                Grid.SetColumn(vh, 0);
 
                 for (var y = 0; y < FieldSize; y++)
                 {
@@ -81,8 +81,8 @@ namespace SeaBattleWPF.GameControls
                                 {
                                     var cell = new FieldCell(BlockState.IsShip, x, y);
                                     Grid.Children.Add(cell.Control);
-                                    SetRow(cell.Control, y + 1);
-                                    SetColumn(cell.Control, x + 1);
+                                    Grid.SetRow(cell.Control, y + 1);
+                                    Grid.SetColumn(cell.Control, x + 1);
 
                                     fieldCell[x, y] = cell;
 
@@ -96,8 +96,8 @@ namespace SeaBattleWPF.GameControls
                                 {
                                     var cell = new FieldCell(BlockState.IsEmpty, x, y);
                                     Grid.Children.Add(cell.Control);
-                                    SetRow(cell.Control, y + 1);
-                                    SetColumn(cell.Control, x + 1);
+                                    Grid.SetRow(cell.Control, y + 1);
+                                    Grid.SetColumn(cell.Control, x + 1);
 
                                     fieldCell[x, y] = cell;
 

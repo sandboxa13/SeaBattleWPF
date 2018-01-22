@@ -1,4 +1,7 @@
-﻿using SeaBattleWPF.GameControls;
+﻿using SeaBattle.Engine.Common.AI;
+using SeaBattleWPF.GameControls;
+using System;
+using System.Threading;
 using System.Windows;
 using System.Windows.Media;
 
@@ -9,22 +12,27 @@ namespace SeaBattleWPF
     /// </summary>
     public partial class MainWindow : Window
     {
+        private Computer _computer;
+
         public MainWindow()
         {
             InitializeComponent();
+
+            _computer = new Computer(Player.Map);
 
             Computer.OnBattleFieldCellMouseEnter += Field_OnBattleFieldCellMouseEnter;
             Computer.OnBattleFieldCellMouseLeave += Field_OnBattleFieldCellMouseLeave;
             Computer.OnBattleFieldCellMouseUp += Field_OnBattleFieldCellMouseUp;
 
-            for(var x = 0; x < 10; x++)
+            for (var x = 0; x < 10; x++)
             {
-                for(var y = 0; y < 10; y++)
+                for (var y = 0; y < 10; y++)
                 {
                     Computer.fieldCell[x, y].Control.Background = Brushes.CornflowerBlue;
                 }
             }
         }
+
 
         private void CheckOnShoot(FieldCell cell)
         {
@@ -32,7 +40,16 @@ namespace SeaBattleWPF
             {
                 Computer.fieldCell[cell.X, cell.Y].Control.Background = Brushes.Black;
             }
+
+            else
+            {
+                var computerCoord = _computer.GenerateCoord();
+
+                Player.fieldCell[computerCoord.X, computerCoord.Y].Control.Background = Brushes.Black;
+            }
         }
+
+        #region Events Handle
 
         private void Field_OnBattleFieldCellMouseUp(object sender, BattleFieldCellEventArgs e)
         {
@@ -47,5 +64,7 @@ namespace SeaBattleWPF
         {
 
         }
+
+        #endregion
     }
 }
