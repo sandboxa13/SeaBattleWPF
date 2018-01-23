@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Threading;
 using SeaBattle.Engine.Common.MapLogic;
 
 namespace SeaBattle.Engine.Common.CoordsHelper
@@ -10,30 +9,27 @@ namespace SeaBattle.Engine.Common.CoordsHelper
         public GenerateRandomCoordsOneHp(Map map) : base(map)
         {
             Random = new Random();
+
+            coords = new List<Coords>();
         }
 
         public override List<Coords> GenerateCoords()
         {
-            var coords = new List<Coords>();
 
             while (coords.Count == 0)
             {
-                Thread.Sleep(20);
+                var generatedCoord = new Coords(Random.Next(0, 9), Random.Next(0, 9)); // Genearte new coordinate
 
-                var generatedCoord = new Coords(Random.Next(0, 9), Random.Next(0, 9));
+                if (CheckCoordinateOnMap(generatedCoord)) continue; // Check this coordinate on map
 
-                if (Map.MapBlocks[generatedCoord.X, generatedCoord.Y].State == BlockState.IsBusy || Map.MapBlocks[generatedCoord.X, generatedCoord.Y].State == BlockState.IsShip) continue;
+                SetBusyCells(generatedCoord); // Set the cells on the map as busy around the coordinate
 
-                SetBusyCells(generatedCoord);
-
-                Map.MapBlocks[generatedCoord.X, generatedCoord.Y].State = BlockState.IsShip;
+                SetShipCells(generatedCoord); // Set coordinate on map to ship
 
                 coords.Add(generatedCoord);
             }   
 
             return coords;
-        }
-
-        
+        }   
     }
 }

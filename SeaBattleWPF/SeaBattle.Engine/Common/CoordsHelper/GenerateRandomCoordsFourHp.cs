@@ -7,7 +7,5 @@ namespace SeaBattle.Engine.Common.CoordsHelper
         public GenerateRandomCoordsFourHp(Map map) : base(map)
         {
         }
-
-
     }
 }

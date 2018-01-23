@@ -18,8 +18,6 @@ namespace SeaBattleWPF
 
             _computer = new Computer(Player.Map);
 
-            
-
             Computer.OnBattleFieldCellMouseEnter += Field_OnBattleFieldCellMouseEnter;
             Computer.OnBattleFieldCellMouseLeave += Field_OnBattleFieldCellMouseLeave;
             Computer.OnBattleFieldCellMouseUp += Field_OnBattleFieldCellMouseUp;

@@ -8,9 +8,6 @@
 
         IsShooted = 2,  
 
-        IsShip = 3,
-
-        IsDead = 4
-
+        IsShip = 3
     }
 }
