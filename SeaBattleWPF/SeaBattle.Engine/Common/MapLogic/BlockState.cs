@@ -2,12 +2,9 @@
 {
     public enum BlockState
     {
-        IsEmpty = 0,
-
-        IsBusy = 1,
-
-        IsShooted = 2,  
-
-        IsShip = 3
+        IsEmpty,
+        IsBusy,
+        IsShooted,
+        IsShip
     }
 }

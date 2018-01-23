@@ -35,6 +35,7 @@ namespace SeaBattleWPF.GameControls
                     };
                     break;
 
+
                 default:
                     Control = new UserControl
                     {

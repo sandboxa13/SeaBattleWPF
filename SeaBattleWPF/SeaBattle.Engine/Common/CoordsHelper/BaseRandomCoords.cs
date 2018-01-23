@@ -43,30 +43,9 @@ namespace SeaBattle.Engine.Common.CoordsHelper
 
         }
 
-        protected void SetBusyCells(IEnumerable<Coords> coords)
-        {
-            foreach (var coord in coords)
-            {
-                if (coord.X + 1 < 10)
-                    Map.MapBlocks[coord.X + 1, coord.Y].State = BlockState.IsBusy;
-                if (coord.X - 1 >= 0)
-                    Map.MapBlocks[coord.X - 1, coord.Y].State = BlockState.IsBusy;
-
-                if (coord.Y + 1 < 10)
-                    Map.MapBlocks[coord.X, coord.Y + 1].State = BlockState.IsBusy;
-                if (coord.Y - 1 >= 0)
-                    Map.MapBlocks[coord.X, coord.Y - 1].State = BlockState.IsBusy;
-
-                if (coord.Y + 1 < 10 && coord.X + 1 < 10 && coord.X + 1 >= 0 && coord.Y + 1 >= 0)
-                    Map.MapBlocks[coord.X + 1, coord.Y + 1].State = BlockState.IsBusy;
-                if (coord.Y - 1 >= 0 && coord.X - 1 >= 0 && coord.X - 1 < 10 && coord.Y - 1 < 10)
-                    Map.MapBlocks[coord.X - 1, coord.Y - 1].State = BlockState.IsBusy;
-
-                if (coord.Y - 1 < 10 && coord.X + 1 < 10 && coord.X + 1 >= 0 && coord.Y - 1 >= 0)
-                    Map.MapBlocks[coord.X + 1, coord.Y - 1].State = BlockState.IsBusy;
-                if (coord.Y + 1 >= 0 && coord.X - 1 >= 0 && coord.X - 1 < 10 && coord.Y + 1 < 10)
-                    Map.MapBlocks[coord.X - 1, coord.Y + 1].State = BlockState.IsBusy;
-            }
+        protected void SetBusyCells(IEnumerable<Coords> coords) {
+            foreach (var coord in coords)           
+                SetBusyCells(coord);
         }
 
         protected void SetShipCells(Coords coord) => Map.MapBlocks[coord.X, coord.Y].State = BlockState.IsShip;
@@ -85,10 +64,7 @@ namespace SeaBattle.Engine.Common.CoordsHelper
 
         #region Constructor
 
-        public BaseRandomCoords(Map map)
-        {
-            Map = map;
-        }
+        public BaseRandomCoords(Map map) => Map = map;
 
         #endregion
 

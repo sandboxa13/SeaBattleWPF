@@ -2,20 +2,28 @@
 using System.Windows;
 using System.Windows.Controls;
 using SeaBattle.Engine.Common.MapLogic;
-using SeaBattle.Engine.Ships;
 
 namespace SeaBattleWPF.GameControls
 {
     public partial class Field
     {
+        #region Public Fields
+
         public Map Map;
         public FieldCell[,] fieldCell;
-        private int FieldSize { get; } = 10;
+        public int FieldSize { get; } = 10;
 
+        #endregion
+
+        #region Events 
 
         public event EventHandler<BattleFieldCellEventArgs> OnBattleFieldCellMouseUp = delegate { };
         public event EventHandler<BattleFieldCellEventArgs> OnBattleFieldCellMouseEnter = delegate { };
         public event EventHandler<BattleFieldCellEventArgs> OnBattleFieldCellMouseLeave = delegate { };
+
+        #endregion
+
+        #region Constructor
 
         public Field()
         {
@@ -27,23 +35,16 @@ namespace SeaBattleWPF.GameControls
             fieldCell = new FieldCell[10, 10];
             Map = new Map();
 
-            Map._ships.Add(new ThreeHpShip(Map));
-            Map._ships.Add(new ThreeHpShip(Map));
-
-            Map._ships.Add(new TwoHpShip(Map));
-            Map._ships.Add(new TwoHpShip(Map));
-            Map._ships.Add(new TwoHpShip(Map));
-
-            Map._ships.Add(new OneHpShip(Map));
-            Map._ships.Add(new OneHpShip(Map));
-            Map._ships.Add(new OneHpShip(Map));
-            Map._ships.Add(new OneHpShip(Map));
+            Map._ships = Map.GenerateDefaultShips(Map);
       
-
             Draw();
         }
 
-        public void Draw()
+        #endregion
+
+        #region Private Methods
+
+        private void Draw()
         {
             for (var i = 0; i < 10; i++)
             {
@@ -92,7 +93,7 @@ namespace SeaBattleWPF.GameControls
                                     cell.Control.MouseEnter += (sender, ea) => OnBattleFieldCellMouseEnter(this, new BattleFieldCellEventArgs(cell, ea));
                                     cell.Control.MouseLeave += (sender, ea) => OnBattleFieldCellMouseLeave(this, new BattleFieldCellEventArgs(cell, ea));
                                     break;
-                                }
+                                }                    
                             default:
                                 {
                                     var cell = new FieldCell(BlockState.IsEmpty, x, y);
@@ -113,6 +114,8 @@ namespace SeaBattleWPF.GameControls
                 }
             }
         }
+
+        #endregion
 
         #region FieldColorsCollection Colors
 
