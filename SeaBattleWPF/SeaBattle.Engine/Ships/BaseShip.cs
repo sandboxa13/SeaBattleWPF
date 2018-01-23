@@ -6,16 +6,26 @@ namespace SeaBattle.Engine.Ships
 {
     public class BaseShip
     {
-        public bool IsAlive { get; set; }
+        public bool IsAlive
+        {
+            get => IsAlive;
+
+            set
+            {
+                if (Hp <= 0) value = false;
+            }
+        }
+
+
         public int Hp { get; set; }
 
         public List<Coords> Coords;
 
         public ShipsEnum ShipsEnum;
-            
+
         protected IGenerateRandomCoords RandomCoords;
 
-        public BaseShip() 
+        public BaseShip()
         {
             IsAlive = true;
         }

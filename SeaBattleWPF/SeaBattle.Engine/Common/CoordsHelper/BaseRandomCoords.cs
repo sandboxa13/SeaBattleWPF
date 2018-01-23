@@ -11,6 +11,30 @@ namespace SeaBattle.Engine.Common.CoordsHelper
 
         protected Random Random;
 
+        protected void SetBusyCells(Coords coord)
+        {
+            if (coord.X + 1 < 10)
+                Map.MapBlocks[coord.X + 1, coord.Y].State = BlockState.IsBusy;
+            if (coord.X - 1 >= 0)
+                Map.MapBlocks[coord.X - 1, coord.Y].State = BlockState.IsBusy;
+
+            if (coord.Y + 1 < 10)
+                Map.MapBlocks[coord.X, coord.Y + 1].State = BlockState.IsBusy;
+            if (coord.Y - 1 >= 0)
+                Map.MapBlocks[coord.X, coord.Y - 1].State = BlockState.IsBusy;
+
+            if (coord.Y + 1 < 10 && coord.X + 1 < 10 && coord.X + 1 >= 0 && coord.Y + 1 >= 0)
+                Map.MapBlocks[coord.X + 1, coord.Y + 1].State = BlockState.IsBusy;
+            if (coord.Y - 1 >= 0 && coord.X - 1 >= 0 && coord.X - 1 < 10 && coord.Y - 1 < 10)
+                Map.MapBlocks[coord.X - 1, coord.Y - 1].State = BlockState.IsBusy;
+
+            if (coord.Y - 1 < 10 && coord.X + 1 < 10 && coord.X + 1 >= 0 && coord.Y - 1 >= 0)
+                Map.MapBlocks[coord.X + 1, coord.Y - 1].State = BlockState.IsBusy;
+            if (coord.Y + 1 >= 0 && coord.X - 1 >= 0 && coord.X - 1 < 10 && coord.Y + 1 < 10)
+                Map.MapBlocks[coord.X - 1, coord.Y + 1].State = BlockState.IsBusy;
+
+        }
+
         protected List<Coords> TopSideCoords = new List<Coords>
         {
             new Coords(2, 0),

@@ -1,7 +1,5 @@
 ﻿using SeaBattle.Engine.Common.AI;
 using SeaBattleWPF.GameControls;
-using System;
-using System.Threading;
 using System.Windows;
 using System.Windows.Media;
 
@@ -19,6 +17,8 @@ namespace SeaBattleWPF
             InitializeComponent();
 
             _computer = new Computer(Player.Map);
+
+            
 
             Computer.OnBattleFieldCellMouseEnter += Field_OnBattleFieldCellMouseEnter;
             Computer.OnBattleFieldCellMouseLeave += Field_OnBattleFieldCellMouseLeave;

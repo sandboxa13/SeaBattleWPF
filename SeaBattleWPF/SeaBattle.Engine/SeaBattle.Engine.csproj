@@ -55,6 +55,7 @@
     <Compile Include="Ships\FourHpShip.cs" />
     <Compile Include="Ships\OneHpShip.cs" />
     <Compile Include="Ships\ShipsEnum.cs" />
+    <Compile Include="Ships\ShipsExtentions.cs" />
     <Compile Include="Ships\ThreeHpShip.cs" />
     <Compile Include="Ships\TwoHpShip.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

@@ -1,4 +1,5 @@
 ﻿using SeaBattle.Engine.Common.MapLogic;
+using SeaBattle.Engine.Ships;
 using System;
 using System.Collections.Generic;
 
@@ -14,6 +15,8 @@ namespace SeaBattle.Engine.Common.AI
 
         private Map _map;
 
+        private BaseShip _currentShip;
+
         #endregion
 
         #region Public Methods
@@ -26,7 +29,7 @@ namespace SeaBattle.Engine.Common.AI
                 {
                     var coord = new Coords(_random.Next(0, 9), _random.Next(0, 9));
 
-                    if (_map.MapBlocks[coord.X, coord.Y].State != BlockState.IsShip || _map.MapBlocks[coord.X, coord.Y].State != BlockState.IsShip) continue;
+                    _map.MapBlocks[coord.X, coord.Y].State = BlockState.IsShooted;
 
                     _series.Add(coord);
 
@@ -48,6 +51,11 @@ namespace SeaBattle.Engine.Common.AI
 
         #region Private Methods
 
+        private bool CheckCoords(IEnumerable<Coords> coords)
+        {
+            return false;
+        }
+
         private Coords GenerateCoordHelper()
         {
             switch (_series.Count)
@@ -55,6 +63,10 @@ namespace SeaBattle.Engine.Common.AI
                 case 1:
                     //need nested switch where generated new coord with random +x or +y or somthing else
                     return new Coords(_series[0].X + 1, _series[0].Y);
+
+                case 2:
+
+                    break;
             }
 
             return null;
@@ -66,10 +78,9 @@ namespace SeaBattle.Engine.Common.AI
 
         public Computer(Map map)
         {
-            _map = map;
+            _map = new Map();
             _random = new Random();
             _series = new List<Coords>();
-            _generatedCoords = new List<Coords>();
         }
 
         #endregion

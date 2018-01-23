@@ -23,7 +23,7 @@ namespace SeaBattle.Engine.Common.CoordsHelper
             {
                 var generatedCoords = new Coords(Random.Next(1, 8), Random.Next(1, 8));
 
-                if (Map.MapBlocks[generatedCoords.X, generatedCoords.Y].State == BlockState.IsShip) continue;
+                if (Map.MapBlocks[generatedCoords.X, generatedCoords.Y].State == BlockState.IsBusy || Map.MapBlocks[generatedCoords.X, generatedCoords.Y].State == BlockState.IsShip) continue;
 
                 var rnd = Random.Next(0, 3);
 
@@ -66,6 +66,9 @@ namespace SeaBattle.Engine.Common.CoordsHelper
                         break;
                 }
             }
+
+            SetBusyCells(coords[0]);
+            SetBusyCells(coords[1]);
 
             Map.MapBlocks[coords[0].X, coords[0].Y].State = BlockState.IsShip;
             Map.MapBlocks[coords[1].X, coords[1].Y].State = BlockState.IsShip;

@@ -20,16 +20,20 @@ namespace SeaBattle.Engine.Common.CoordsHelper
             {
                 Thread.Sleep(20);
 
-                var generatedCoords = new Coords(Random.Next(0, 9), Random.Next(0, 9));
+                var generatedCoord = new Coords(Random.Next(0, 9), Random.Next(0, 9));
 
-                if (Map.MapBlocks[generatedCoords.X, generatedCoords.Y].State == BlockState.IsShip) continue;
+                if (Map.MapBlocks[generatedCoord.X, generatedCoord.Y].State == BlockState.IsBusy || Map.MapBlocks[generatedCoord.X, generatedCoord.Y].State == BlockState.IsShip) continue;
 
-                Map.MapBlocks[generatedCoords.X, generatedCoords.Y].State = BlockState.IsShip;
+                SetBusyCells(generatedCoord);
 
-                coords.Add(generatedCoords);
-            }
+                Map.MapBlocks[generatedCoord.X, generatedCoord.Y].State = BlockState.IsShip;
+
+                coords.Add(generatedCoord);
+            }   
 
             return coords;
         }
+
+        
     }
 }

@@ -38,6 +38,7 @@ namespace SeaBattleWPF.GameControls
             Map._ships.Add(new OneHpShip(Map));
             Map._ships.Add(new OneHpShip(Map));
             Map._ships.Add(new OneHpShip(Map));
+      
 
             Draw();
         }

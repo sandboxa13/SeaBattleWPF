@@ -34,6 +34,7 @@ namespace SeaBattleWPF.GameControls
                         BorderBrush = Brushes.Transparent
                     };
                     break;
+
                 default:
                     Control = new UserControl
                     {
