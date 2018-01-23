@@ -1,6 +1,5 @@
 ﻿using SeaBattle.Engine.Common.AI;
 using SeaBattleWPF.GameControls;
-using System.Windows;
 using System.Windows.Media;
 
 namespace SeaBattleWPF
@@ -8,9 +7,9 @@ namespace SeaBattleWPF
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class MainWindow
     {
-        private Computer _computer;
+        private readonly Computer _computer;
 
         public MainWindow()
         {
@@ -26,7 +25,7 @@ namespace SeaBattleWPF
             {
                 for (var y = 0; y < 10; y++)
                 {
-                    Computer.fieldCell[x, y].Control.Background = Brushes.CornflowerBlue;
+                    Computer.FieldCell[x, y].Control.Background = Brushes.CornflowerBlue;
                 }
             }
         }
@@ -36,14 +35,14 @@ namespace SeaBattleWPF
         {
             if (Computer.Map.MapBlocks[cell.X, cell.Y].X == cell.X && Computer.Map.MapBlocks[cell.X, cell.Y].Y == cell.Y && Computer.Map.MapBlocks[cell.X, cell.Y].State == SeaBattle.Engine.Common.MapLogic.BlockState.IsShip)
             {
-                Computer.fieldCell[cell.X, cell.Y].Control.Background = Brushes.Black;
+                Computer.FieldCell[cell.X, cell.Y].Control.Background = Brushes.Black;
             }
 
             else
             {
                 var computerCoord = _computer.GenerateCoord();
 
-                Player.fieldCell[computerCoord.X, computerCoord.Y].Control.Background = Brushes.Black;
+                Player.FieldCell[computerCoord.X, computerCoord.Y].Control.Background = Brushes.Black;
             }
         }
 

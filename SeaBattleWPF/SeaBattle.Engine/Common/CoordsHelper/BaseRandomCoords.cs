@@ -13,14 +13,13 @@ namespace SeaBattle.Engine.Common.CoordsHelper
 
         protected Random Random;
 
-        protected List<Coords> coords;
+        protected List<Coords> Coords;  
 
         #endregion
 
         #region Protected Methods
 
-        protected void SetBusyCells(Coords coord)
-        {
+        protected void SetBusyCells(Coords coord) {
             if (coord.X + 1 < 10)
                 Map.MapBlocks[coord.X + 1, coord.Y].State = BlockState.IsBusy;
             if (coord.X - 1 >= 0)
@@ -40,7 +39,6 @@ namespace SeaBattle.Engine.Common.CoordsHelper
                 Map.MapBlocks[coord.X + 1, coord.Y - 1].State = BlockState.IsBusy;
             if (coord.Y + 1 >= 0 && coord.X - 1 >= 0 && coord.X - 1 < 10 && coord.Y + 1 < 10)
                 Map.MapBlocks[coord.X - 1, coord.Y + 1].State = BlockState.IsBusy;
-
         }
 
         protected void SetBusyCells(IEnumerable<Coords> coords) {
@@ -56,9 +54,9 @@ namespace SeaBattle.Engine.Common.CoordsHelper
                 Map.MapBlocks[coord.X, coord.Y].State = BlockState.IsShip;
         }
 
-        protected bool CheckCoordinateOnMap(Coords coord) => (Map.MapBlocks[coord.X, coord.Y].State == BlockState.IsBusy || Map.MapBlocks[coord.X, coord.Y].State == BlockState.IsShip) ? true : false;
+        protected bool CheckCoordinateOnMap(Coords coord) => Map.MapBlocks[coord.X, coord.Y].State == BlockState.IsBusy || Map.MapBlocks[coord.X, coord.Y].State == BlockState.IsShip;
 
-        protected bool CheckOnIsEmpty(int x, int y) => Map.MapBlocks[x, y].State == BlockState.IsEmpty ? true : false;
+        protected bool CheckOnIsEmpty(int x, int y) => Map.MapBlocks[x, y].State == BlockState.IsEmpty;
 
         #endregion
 

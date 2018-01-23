@@ -10,13 +10,13 @@ namespace SeaBattle.Engine.Common.CoordsHelper
         {
             Random = new Random();
 
-            coords = new List<Coords>();
+            Coords = new List<Coords>();
         }
 
         public override List<Coords> GenerateCoords()
         {
 
-            while (coords.Count == 0)
+            while (Coords.Count == 0)
             {
                 var generatedCoord = new Coords(Random.Next(0, 9), Random.Next(0, 9)); // Genearte new coordinate
 
@@ -26,10 +26,10 @@ namespace SeaBattle.Engine.Common.CoordsHelper
 
                 SetShipCells(generatedCoord); // Set coordinate on map to ship
 
-                coords.Add(generatedCoord);
+                Coords.Add(generatedCoord);
             }   
 
-            return coords;
+            return Coords;
         }   
     }
 }

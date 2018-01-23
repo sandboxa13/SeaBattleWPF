@@ -1,5 +1,4 @@
 ﻿using SeaBattle.Engine.Common.MapLogic;
-using SeaBattle.Engine.Ships;
 using System;
 using System.Collections.Generic;
 
@@ -9,13 +8,11 @@ namespace SeaBattle.Engine.Common.AI
     {
         #region Private Fields 
 
-        private List<Coords> _series;
+        private readonly List<Coords> _series;
 
-        private Random _random;
+        private readonly Random _random;
 
-        private Map _map;
-
-        private BaseShip _currentShip;
+        private readonly Map _map;
 
         #endregion
 
@@ -50,11 +47,6 @@ namespace SeaBattle.Engine.Common.AI
         #endregion
 
         #region Private Methods
-
-        private bool CheckCoords(IEnumerable<Coords> coords)
-        {
-            return false;
-        }
 
         private Coords GenerateCoordHelper()
         {

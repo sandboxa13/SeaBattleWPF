@@ -21,26 +21,6 @@ namespace SeaBattle.Engine.Common.MapLogic
                 }
             }
         }
-
-        public List<BaseShip> GenerateDefaultShips(Map map)
-        {
-            var ships = new List<BaseShip>
-            {
-                new ThreeHpShip(map),
-                new ThreeHpShip(map),
-
-                new TwoHpShip(map),
-                new TwoHpShip(map),
-                new TwoHpShip(map),
-
-                new OneHpShip(map),
-                new OneHpShip(map),
-                new OneHpShip(map),
-                new OneHpShip(map),
-            };
-
-            return ships;
-        }
     }
 }
     

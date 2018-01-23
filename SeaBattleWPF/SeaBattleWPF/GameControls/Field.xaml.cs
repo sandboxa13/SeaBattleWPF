@@ -2,15 +2,16 @@
 using System.Windows;
 using System.Windows.Controls;
 using SeaBattle.Engine.Common.MapLogic;
+using SeaBattle.Engine.Ships;
 
 namespace SeaBattleWPF.GameControls
 {
     public partial class Field
     {
         #region Public Fields
-
+            
         public Map Map;
-        public FieldCell[,] fieldCell;
+        public FieldCell[,] FieldCell;
         public int FieldSize { get; } = 10;
 
         #endregion
@@ -32,10 +33,10 @@ namespace SeaBattleWPF.GameControls
             Grid.RowDefinitions.Add(new RowDefinition { Height = new GridLength(0, GridUnitType.Auto) });
             Grid.ColumnDefinitions.Add(new ColumnDefinition { Width = new GridLength(0, GridUnitType.Auto) });
 
-            fieldCell = new FieldCell[10, 10];
+            FieldCell = new FieldCell[10, 10];
             Map = new Map();
 
-            Map._ships = Map.GenerateDefaultShips(Map);
+            Map._ships.GenerateDefaultShips(Map);
       
             Draw();
         }
@@ -86,7 +87,7 @@ namespace SeaBattleWPF.GameControls
                                     Grid.SetRow(cell.Control, y + 1);
                                     Grid.SetColumn(cell.Control, x + 1);
 
-                                    fieldCell[x, y] = cell;
+                                    FieldCell[x, y] = cell;
 
                                     cell.Control.PreviewMouseDown += (sender, ea) => ea.Handled = true;
                                     cell.Control.MouseUp += (sender, ea) => OnBattleFieldCellMouseUp(this, new BattleFieldCellEventArgs(cell, ea));
@@ -101,7 +102,7 @@ namespace SeaBattleWPF.GameControls
                                     Grid.SetRow(cell.Control, y + 1);
                                     Grid.SetColumn(cell.Control, x + 1);
 
-                                    fieldCell[x, y] = cell;
+                                    FieldCell[x, y] = cell;
 
                                     cell.Control.PreviewMouseDown += (sender, ea) => ea.Handled = true;
                                     cell.Control.MouseUp += (sender, ea) => OnBattleFieldCellMouseUp(this, new BattleFieldCellEventArgs(cell, ea));

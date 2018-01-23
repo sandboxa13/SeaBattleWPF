@@ -10,12 +10,12 @@ namespace SeaBattle.Engine.Common.CoordsHelper
         {
             Random = new Random();
 
-            coords = new List<Coords>();
+            Coords = new List<Coords>();
         }
 
         public override List<Coords> GenerateCoords()
         {
-            while (coords.Count != 2)
+            while (Coords.Count != 2)
             {
                 var generatedCoords = new Coords(Random.Next(1, 8), Random.Next(1, 8));
 
@@ -27,7 +27,7 @@ namespace SeaBattle.Engine.Common.CoordsHelper
                 {
                     case 0:
                         if (CheckOnIsEmpty(generatedCoords.X + 1, generatedCoords.Y))
-                            coords = new List<Coords>
+                            Coords = new List<Coords>
                             {
                                 generatedCoords,
                                 new Coords(generatedCoords.X + 1, generatedCoords.Y),
@@ -36,7 +36,7 @@ namespace SeaBattle.Engine.Common.CoordsHelper
 
                     case 1:
                         if (CheckOnIsEmpty(generatedCoords.X - 1, generatedCoords.Y))
-                            coords = new List<Coords>
+                            Coords = new List<Coords>
                             {
                                 generatedCoords,
                                 new Coords(generatedCoords.X - 1, generatedCoords.Y),
@@ -45,7 +45,7 @@ namespace SeaBattle.Engine.Common.CoordsHelper
 
                     case 2:
                         if (CheckOnIsEmpty(generatedCoords.X, generatedCoords.Y - 1))                      
-                            coords = new List<Coords>
+                            Coords = new List<Coords>
                             {
                                 generatedCoords,
                                 new Coords(generatedCoords.X, generatedCoords.Y - 1),
@@ -54,7 +54,7 @@ namespace SeaBattle.Engine.Common.CoordsHelper
 
                     case 3:
                         if (CheckOnIsEmpty(generatedCoords.X, generatedCoords.Y + 1))
-                            coords = new List<Coords>
+                            Coords = new List<Coords>
                             {
                                 generatedCoords,
                                 new Coords(generatedCoords.X, generatedCoords.Y + 1),
@@ -63,11 +63,11 @@ namespace SeaBattle.Engine.Common.CoordsHelper
                 }
             }
 
-            SetBusyCells(coords);
+            SetBusyCells(Coords);
 
-            SetShipCells(coords);
+            SetShipCells(Coords);
 
-            return coords;
+            return Coords;
         }
     }
 }

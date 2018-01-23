@@ -5,6 +5,12 @@ namespace SeaBattle.Engine.Ships
 {
     public static class ShipsExtentions
     {
+        /// <summary>
+        /// Getting ship state by his coordinate
+        /// </summary>
+        /// <param name="ships"></param>
+        /// <param name="coord"></param>
+        /// <returns></returns>
         public static bool GetShipStateOnCoord(this IEnumerable<BaseShip> ships, Coords coord)
         {
             foreach(var ship in ships)
@@ -40,6 +46,33 @@ namespace SeaBattle.Engine.Ships
             }
 
             return false;
+        }
+
+
+        /// <summary>
+        /// Generate a standard set of ships
+        /// </summary>
+        /// <param name="enumerable"></param>
+        /// <param name="map"></param>
+        /// <returns></returns>
+        public static IEnumerable<BaseShip> GenerateDefaultShips(this IEnumerable<BaseShip> enumerable, Map map)
+        {
+            enumerable = new List<BaseShip>
+            {
+                new ThreeHpShip(map),
+                new ThreeHpShip(map),   
+
+                new TwoHpShip(map),
+                new TwoHpShip(map),
+                new TwoHpShip(map),
+
+                new OneHpShip(map),
+                new OneHpShip(map),
+                new OneHpShip(map),
+                new OneHpShip(map),
+            };
+
+            return enumerable;
         }
     }
 }
