@@ -1,9 +1,4 @@
-﻿using System;
-using System.Windows;
-using System.Windows.Controls;
-using SeaBattle.Engine.Common.MapLogic;
-using SeaBattle.Engine.Ships;
-using SeaBattleWPF.ViewModels;
+﻿using SeaBattleWPF.Core.ViewModels;
 
 namespace SeaBattleWPF.GameControls
 {
@@ -18,8 +13,6 @@ namespace SeaBattleWPF.GameControls
             DataContext = new BattleFieldViewModel(10, 10);
         }
 
-        #endregion
-
-      
+        #endregion   
     }
 }

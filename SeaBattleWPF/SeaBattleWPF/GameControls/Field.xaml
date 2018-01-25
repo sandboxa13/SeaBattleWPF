@@ -3,30 +3,29 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-             mc:Ignorable="d"     
-             xmlns:local="clr-namespace:SeaBattleWPF.ViewModels"
+             mc:Ignorable="d"
              xmlns:converters="clr-namespace:SeaBattleWPF.Converters"
+             xmlns:viewModels1="clr-namespace:SeaBattleWPF.Core.ViewModels;assembly=SeaBattleWPF.Core"
              d:DesignHeight="500" d:DesignWidth="500">
     
     <UserControl.Resources>
-        <converters:ColorToBrushConverter x:Key="ColorBrushConverter" />
+        <converters:StringToBrushConverter x:Key="StringToBrushConverter" />
     </UserControl.Resources>
 
-    <Grid d:DataContext="{d:DesignInstance Type=local:BattleFieldViewModel, IsDesignTimeCreatable=False}" >
+    <Grid d:DataContext="{d:DesignInstance Type=viewModels1:BattleFieldViewModel, IsDesignTimeCreatable=False}" >
         <ItemsControl ItemsSource="{Binding AllCells}">
             <ItemsControl.ItemsPanel>
                 <ItemsPanelTemplate>
-                    <UniformGrid IsItemsHost="True"
-                                 Rows="{Binding Width}" Columns="{Binding Height}"/>
+                    <UniformGrid IsItemsHost="True"/>
                 </ItemsPanelTemplate>
             </ItemsControl.ItemsPanel>
             <ItemsControl.ItemTemplate>
-                <DataTemplate DataType="{x:Type local:CellViewModel}">
-                    <Label Background="{Binding Background, Converter={StaticResource ColorBrushConverter}}"  
+                <DataTemplate DataType="{x:Type viewModels1:CellViewModel}">
+                    <Label Background="{Binding Background, Converter={StaticResource StringToBrushConverter}}"  
                            Margin="2" >
                         <Label.InputBindings>
                             <MouseBinding Gesture="LeftClick" Command="{Binding Click}">
-                                
+
                             </MouseBinding>
                         </Label.InputBindings>
                     </Label>
@@ -34,6 +33,5 @@
             </ItemsControl.ItemTemplate>
         </ItemsControl>
     </Grid>
-
 </UserControl>
 

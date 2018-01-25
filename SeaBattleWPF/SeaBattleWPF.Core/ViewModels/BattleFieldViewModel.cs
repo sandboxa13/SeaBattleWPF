@@ -1,9 +1,9 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using System.Windows;
-using System.Windows.Media;
+using SeaBattle.Engine.Common.MapLogic;
+using SeaBattle.Engine.Ships;
 
-namespace SeaBattleWPF.ViewModels
+namespace SeaBattleWPF.Core.ViewModels
 {
     public class BattleFieldViewModel : BaseViewModel
     {
@@ -41,6 +41,8 @@ namespace SeaBattleWPF.ViewModels
             }
         }
 
+        public Map Map;
+
         public IEnumerable<CellViewModel> AllCells => _cells.Cast<CellViewModel>();
 
         #endregion
@@ -63,14 +65,28 @@ namespace SeaBattleWPF.ViewModels
 
         private void GenerateCells()
         {
+            Map = new Map();
+
+            Map._ships.GenerateDefaultShips(Map);
+
             for (var x = 0; x < _rows; x++)
             {
                 for (var y = 0; y < _columns; y++)
                 {
-                    _cells[x, y] = new CellViewModel(x, y, Colors.Black);
-                }   
+                    switch (Map.MapBlocks[x, y].State)
+                    {
+                        case BlockState.IsEmpty:
+                            _cells[x, y] = new CellViewModel(x, y, "Black");
+                            break;
+                        case BlockState.IsShip:
+                            _cells[x, y] = new CellViewModel(x, y, "Red");
+                            break;
+                        default:
+                            _cells[x, y] = new CellViewModel(x, y, "Black");
+                            break;
+                    }
+                }
             }
-
             OnPropertyChanged(nameof(AllCells));
         }
 
