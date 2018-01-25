@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using System.Windows;
 using System.Windows.Media;
 
 namespace SeaBattleWPF.ViewModels
@@ -66,15 +67,13 @@ namespace SeaBattleWPF.ViewModels
             {
                 for (var y = 0; y < _columns; y++)
                 {
-                    _cells[x, y] = new CellViewModel(x, y, Colors.Black);\
-                }
+                    _cells[x, y] = new CellViewModel(x, y, Colors.Black);
+                }   
             }
 
             OnPropertyChanged(nameof(AllCells));
         }
 
         #endregion
-
-
     }
 }

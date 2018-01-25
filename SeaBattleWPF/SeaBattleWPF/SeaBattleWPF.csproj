@@ -71,11 +71,9 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="GameControls\BattleFieldCellEventArgs.cs" />
-    <Compile Include="GameControls\ColorsCollection.cs" />
     <Compile Include="GameControls\Field.xaml.cs">
       <DependentUpon>Field.xaml</DependentUpon>
     </Compile>
-    <Compile Include="GameControls\FieldCell.cs" />
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
@@ -118,6 +116,7 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="CustomControls\" />
     <Folder Include="Pages\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

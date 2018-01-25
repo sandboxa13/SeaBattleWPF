@@ -1,4 +1,5 @@
 ﻿using System.Windows.Input;
+using SeaBattleWPF.ViewModels;
 
 namespace SeaBattleWPF.GameControls
 {
@@ -8,16 +9,16 @@ namespace SeaBattleWPF.GameControls
     /// 
     public class BattleFieldCellEventArgs : System.EventArgs
     {
-        public FieldCell Cell { get; private set; }
+        public CellViewModel Cell { get; private set; }
         public MouseEventArgs MouseInfo { get; private set; }
 
         public MouseButton? Button { get; private set; }
 
-        public BattleFieldCellEventArgs(FieldCell cell, MouseEventArgs mouseInfo)
+        public BattleFieldCellEventArgs(CellViewModel cell, MouseEventArgs mouseInfo)
         {
             Cell = cell;
             MouseInfo = mouseInfo;
-            Button = (mouseInfo is MouseButtonEventArgs) ? (mouseInfo as MouseButtonEventArgs).ChangedButton : (MouseButton?)null;
+            Button = (mouseInfo as MouseButtonEventArgs)?.ChangedButton;
         }
     }
 }

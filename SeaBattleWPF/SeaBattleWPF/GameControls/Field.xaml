@@ -7,7 +7,7 @@
              xmlns:local="clr-namespace:SeaBattleWPF.ViewModels"
              xmlns:converters="clr-namespace:SeaBattleWPF.Converters"
              d:DesignHeight="500" d:DesignWidth="500">
-
+    
     <UserControl.Resources>
         <converters:ColorToBrushConverter x:Key="ColorBrushConverter" />
     </UserControl.Resources>
@@ -22,8 +22,13 @@
             </ItemsControl.ItemsPanel>
             <ItemsControl.ItemTemplate>
                 <DataTemplate DataType="{x:Type local:CellViewModel}">
-                    <Label Background="{Binding Background, Converter={StaticResource ColorBrushConverter}}"  Margin="2" >
-                        
+                    <Label Background="{Binding Background, Converter={StaticResource ColorBrushConverter}}"  
+                           Margin="2" >
+                        <Label.InputBindings>
+                            <MouseBinding Gesture="LeftClick" Command="{Binding Click}">
+                                
+                            </MouseBinding>
+                        </Label.InputBindings>
                     </Label>
                 </DataTemplate>
             </ItemsControl.ItemTemplate>
@@ -31,3 +36,4 @@
     </Grid>
 
 </UserControl>
+
