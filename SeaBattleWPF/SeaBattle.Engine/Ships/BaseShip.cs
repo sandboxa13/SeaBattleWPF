@@ -6,15 +6,7 @@ namespace SeaBattle.Engine.Ships
 {
     public class BaseShip
     {
-        public bool IsAlive
-        {
-            get => IsAlive;
-
-            set
-            {
-                if (Hp <= 0) value = false;
-            }
-        }
+        public bool IsAlive { get; set; }
 
         public int Hp { get; set; }
 

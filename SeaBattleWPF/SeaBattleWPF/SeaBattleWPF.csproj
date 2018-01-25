@@ -54,7 +54,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="ViewModels\FieldViewModel.cs" />
+    <Compile Include="Converters\ColorToBrushConverter.cs" />
+    <Compile Include="ViewModels\BaseViewModel.cs" />
+    <Compile Include="ViewModels\BattleFieldViewModel.cs" />
+    <Compile Include="ViewModels\CellViewModel.cs" />
     <Page Include="GameControls\Field.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

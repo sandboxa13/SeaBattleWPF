@@ -5,19 +5,29 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              mc:Ignorable="d"     
              xmlns:local="clr-namespace:SeaBattleWPF.ViewModels"
+             xmlns:converters="clr-namespace:SeaBattleWPF.Converters"
              d:DesignHeight="500" d:DesignWidth="500">
 
-
     <UserControl.Resources>
-        <local:FieldViewModel x:Key="Locator" />
+        <converters:ColorToBrushConverter x:Key="ColorBrushConverter" />
     </UserControl.Resources>
 
-    <UserControl.DataContext>
-        <Binding Path="MaterialsNewView" Source="{StaticResource Locator}" />
-    </UserControl.DataContext>
-
-    <Grid Name="Grid" >
-
+    <Grid d:DataContext="{d:DesignInstance Type=local:BattleFieldViewModel, IsDesignTimeCreatable=False}" >
+        <ItemsControl ItemsSource="{Binding AllCells}">
+            <ItemsControl.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <UniformGrid IsItemsHost="True"
+                                 Rows="{Binding Width}" Columns="{Binding Height}"/>
+                </ItemsPanelTemplate>
+            </ItemsControl.ItemsPanel>
+            <ItemsControl.ItemTemplate>
+                <DataTemplate DataType="{x:Type local:CellViewModel}">
+                    <Label Background="{Binding Background, Converter={StaticResource ColorBrushConverter}}"  Margin="2" >
+                        
+                    </Label>
+                </DataTemplate>
+            </ItemsControl.ItemTemplate>
+        </ItemsControl>
     </Grid>
 
 </UserControl>

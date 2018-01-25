@@ -48,6 +48,44 @@ namespace SeaBattle.Engine.Ships
             return false;
         }
 
+        /// <summary>
+        /// Change ship state by his coordinate
+        /// </summary>
+        /// <param name="ships"></param>
+        /// <param name="coord"></param>
+        public static void ChangeShipStateOnCoord(this IEnumerable<BaseShip> ships, Coords coord)
+        {
+            foreach (var ship in ships)
+            {
+                switch (ship.Hp)
+                {
+                    case 1:
+                        if (ship.Coords[0].X == coord.X && ship.Coords[0].Y == coord.Y)
+                        {
+                             ship.IsAlive = false;
+                        }
+
+                        break;
+                    case 2:
+                        if (ship.Coords[0].X == coord.X && ship.Coords[0].Y == coord.Y ||
+                            ship.Coords[1].X == coord.X && ship.Coords[1].Y == coord.Y)
+                        {
+                            ship.IsAlive = false;
+                        }
+
+                        break;
+                    case 3:
+                        if (ship.Coords[0].X == coord.X && ship.Coords[0].Y == coord.Y ||
+                            ship.Coords[1].X == coord.X && ship.Coords[1].Y == coord.Y ||
+                            ship.Coords[2].X == coord.X && ship.Coords[2].Y == coord.Y)
+                        {
+                            ship.IsAlive = false;
+                        }
+
+                        break;
+                }
+            }
+        }
 
         /// <summary>
         /// Generate a standard set of ships
