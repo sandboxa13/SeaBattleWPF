@@ -1,17 +1,32 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Configuration;
-using System.Data;
-using System.Linq;
-using System.Threading.Tasks;
-using System.Windows;
+﻿using System.Windows;
+using SeaBattleWPF.Core.Services;
+using SeaBattleWPF.Pages;
+using SeaBattleWPF.Services;
 
 namespace SeaBattleWPF
 {
     /// <summary>
     /// Interaction logic for App.xaml
     /// </summary>
-    public partial class App : Application
+    public partial class App
     {
+        public static NavigationService Navigation;
+
+        public static MapGeneratorService MapGeneratorService;
+
+        protected override void OnStartup(StartupEventArgs e)
+        {
+            MapGeneratorService = new MapGeneratorService();
+
+            base.OnStartup(e);
+
+            var mainWindow = new MainWindow();
+            mainWindow.Show();
+
+            Navigation = new NavigationService(mainWindow.Frame);
+
+
+            Navigation.Navigate<MainMenu>();
+        }
     }
 }

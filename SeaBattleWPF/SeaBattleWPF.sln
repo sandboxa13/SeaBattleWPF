@@ -1,11 +1,9 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.27130.2010
+VisualStudioVersion = 15.0.27130.2024
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SeaBattleWPF", "SeaBattleWPF\SeaBattleWPF.csproj", "{0E7BBE2F-5B2E-4E75-831F-848C7B707B43}"
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{A50363C0-871E-4CC5-8A87-33E59BBAFFD7}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SeaBattleWPF.Core", "SeaBattleWPF.Core\SeaBattleWPF.Core.csproj", "{B0E81E75-9F5A-42A7-A177-1180CE084F29}"
 EndProject
@@ -38,9 +36,6 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
-	EndGlobalSection
-	GlobalSection(NestedProjects) = preSolution
-		{3FB1BEE6-7479-45C7-BFC7-0E2B25307CC7} = {A50363C0-871E-4CC5-8A87-33E59BBAFFD7}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {FB1D39B6-1E11-484F-AE5A-FA1269046833}

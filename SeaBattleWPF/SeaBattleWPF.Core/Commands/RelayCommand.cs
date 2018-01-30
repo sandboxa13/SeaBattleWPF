@@ -1,39 +1,50 @@
 ﻿using System;
+using System.Threading.Tasks;
 using System.Windows.Input;
 
-namespace SeaBattleWPF.Core.ViewModels
+namespace SeaBattleWPF.Core.Commands
 {
     public class RelayCommand : ICommand
     {
         #region Private Members
 
-        private readonly Action _mAction;
-            
-        #endregion
+        private readonly Func<Task> _task;
 
-        #region Public events
-
-        public event EventHandler CanExecuteChanged = (sender, e) => { };
+        private bool _canExecute = true;
 
         #endregion
 
-        #region Conctructor
-        public RelayCommand(Action action)
-        {
-            _mAction = action;
-        }
+        #region Public Members
 
-        #endregion
+        public RelayCommand(Func<Task> task) => _task = task;
 
-        #region Command methods
-        public bool CanExecute(object parameter)
+        public RelayCommand(Action action) => _task = () =>
         {
-            return true;
-        }
+            action.Invoke();
+            return Task.CompletedTask;
+        };
 
-        public void Execute(object parameter)
+        public bool CanExecute(object parameter) => _canExecute;
+
+        public event EventHandler CanExecuteChanged;
+
+        public async void Execute(object parameter)
         {
-            _mAction();
+            try
+            {
+                UpdateCanExecute(false);
+                await _task.Invoke();
+                UpdateCanExecute(true);
+            }
+            catch
+            {
+                // ignored
+            }
+            void UpdateCanExecute(bool value)
+            {
+                _canExecute = value;
+                CanExecuteChanged?.Invoke(this, EventArgs.Empty);
+            }
         }
 
         #endregion

@@ -6,7 +6,9 @@
              mc:Ignorable="d"
              xmlns:converters="clr-namespace:SeaBattleWPF.Converters"
              xmlns:viewModels1="clr-namespace:SeaBattleWPF.Core.ViewModels;assembly=SeaBattleWPF.Core"
-             d:DesignHeight="500" d:DesignWidth="500">
+             xmlns:models="clr-namespace:SeaBattleWPF.Core.Models;assembly=SeaBattleWPF.Core"
+             d:DesignHeight="500" d:DesignWidth="500"
+             DataContext="{Binding BattleFieldViewModel , Source={StaticResource ViewModelLocator}}">
     
     <UserControl.Resources>
         <converters:StringToBrushConverter x:Key="StringToBrushConverter" />
@@ -20,7 +22,7 @@
                 </ItemsPanelTemplate>
             </ItemsControl.ItemsPanel>
             <ItemsControl.ItemTemplate>
-                <DataTemplate DataType="{x:Type viewModels1:CellViewModel}">
+                <DataTemplate DataType="{x:Type models:Cell}">
                     <Label Background="{Binding Background, Converter={StaticResource StringToBrushConverter}}"  
                            Margin="2" >
                         <Label.InputBindings>

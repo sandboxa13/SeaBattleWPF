@@ -1,8 +1,4 @@
-﻿using SeaBattle.Engine.Common.AI;
-using SeaBattleWPF.GameControls;
-using System.Windows.Media;
-
-namespace SeaBattleWPF
+﻿namespace SeaBattleWPF
 {
     /// <summary>
     /// Interaction logic for MainWindow.xaml

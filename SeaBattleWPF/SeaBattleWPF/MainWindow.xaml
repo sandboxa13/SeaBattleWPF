@@ -3,39 +3,14 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:gameControls="clr-namespace:SeaBattleWPF.GameControls"
         mc:Ignorable="d"
         WindowState="Maximized"
-        Title="MainWindow" Height="350" Width="525">
+        WindowStartupLocation="CenterScreen"
+        Title="MainWindow" Height="600" Width="900">
     <Grid>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="0.5*"></ColumnDefinition>
-            <ColumnDefinition Width="*"></ColumnDefinition>
-            <ColumnDefinition Width="*"></ColumnDefinition>
-        </Grid.ColumnDefinitions>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="*"></RowDefinition>
-            <RowDefinition Height="0.4*"></RowDefinition>
-        </Grid.RowDefinitions>
-        <gameControls:Field Margin="5" Grid.Column="1" Grid.Row="0" x:Name="Computer">
-
-       </gameControls:Field>
-
-        <gameControls:Field Margin="5" Grid.Column="2" Grid.Row="0" x:Name="Player">
-
-        </gameControls:Field>
-        
-        <TextBlock Text="Chat" 
-                   FontSize="40"
-                   HorizontalAlignment="Center" 
-                   VerticalAlignment="Center"
-                   Grid.ColumnSpan="3"
-                   Grid.Row="1"></TextBlock>
-        <TextBlock Text="Menu" 
-                   FontSize="40"
-                   HorizontalAlignment="Center" 
-                   VerticalAlignment="Center"
-                   Grid.ColumnSpan="1"
-                   Grid.RowSpan ="2"></TextBlock>
+        <Grid.Background>
+            <ImageBrush ImageSource="Images/rabstol_net_world_of_warships_11.jpg" Stretch="UniformToFill"/>
+        </Grid.Background>
+        <Frame NavigationUIVisibility="Hidden" x:Name="Frame" ></Frame>
     </Grid>
 </Window>
