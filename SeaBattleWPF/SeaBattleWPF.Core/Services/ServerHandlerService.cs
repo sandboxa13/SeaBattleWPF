@@ -4,6 +4,7 @@ using System.Net;
 using System.Net.Sockets;
 using System.Threading;
 using System.Xml.Serialization;
+using SeaBattleWPF.Core.Enums;
 using SeaBattleWPF.Core.Models;
 
 namespace SeaBattleWPF.Core.Services
@@ -12,9 +13,23 @@ namespace SeaBattleWPF.Core.Services
     {
         private const int Port = 8888;
         private const string Ip = "127.0.0.1";
-        private static Socket _socket;  
+        private static Socket _socket;
+            
+        private static ServerHandlerService instance;
 
-        public static ServerHandlerService serverHandlerService => serverHandlerService ?? new ServerHandlerService();
+        public delegate void NewCoordinate(Message message);
+        // Событие, возникающее при выводе денег
+        public event NewCoordinate CheckCoordinate;     
+
+        private ServerHandlerService()
+        {
+
+        }
+
+        public static ServerHandlerService getInstance()
+        {
+            return instance ?? (instance = new ServerHandlerService());
+        }
 
         public static bool IsConnected;
 
@@ -65,6 +80,15 @@ namespace SeaBattleWPF.Core.Services
                 stream.Write(buffer, 0, bytesReceive);
                 stream.Seek(0, SeekOrigin.Begin);
                 var message = (Message)formatter.Deserialize(stream);
+
+                switch (message.Info)
+                {
+                    case MessageEnum.Coordinate:
+                        CheckCoordinate?.Invoke(message);
+                        break;
+                    case MessageEnum.Message:
+                        break;
+                }
             }
         }
     }

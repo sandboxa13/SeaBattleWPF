@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using SeaBattle.Engine.Common.MapLogic;
 using SeaBattle.Engine.Ships;
+using SeaBattleWPF.Core.Enums;
 using SeaBattleWPF.Core.Models;
 
 namespace SeaBattleWPF.Core.Services
@@ -24,10 +25,10 @@ namespace SeaBattleWPF.Core.Services
                     switch (_map.MapBlocks[x, y].State)
                     {
                         case BlockState.IsShip:
-                            _cells[x, y] = new Cell(x, y, "Red", serverHandlerService);
+                            _cells[x, y] = new Cell(x, y, "Red", serverHandlerService, CellStateEnum.IsShip);
                             break;
                         default:
-                            _cells[x, y] = new Cell(x, y, "Black", serverHandlerService);
+                            _cells[x, y] = new Cell(x, y, "Black", serverHandlerService, CellStateEnum.IsEmpty);
                             break;
                     }
                 }

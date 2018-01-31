@@ -27,6 +27,7 @@ namespace SeaBattleServer
                 {
                     var handle = _serverSocket.Accept();
                     var client = new Client(handle, id);
+                    Console.WriteLine($"Client with id - {id} connected");
                     id++;
                 }
             }

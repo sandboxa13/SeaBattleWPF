@@ -39,13 +39,15 @@ namespace SeaBattleServer
                     stream.Seek(0, SeekOrigin.Begin);
                     var message = (Message)formatter.Deserialize(stream);
 
-                    Console.WriteLine($"info {message.Info}  message {message.message}");
+                    Console.WriteLine($"info {message.Info}  message {message.message} id {_id}");
 
                     Process(message);
                 }
             }
             catch (Exception)
             {
+                Console.WriteLine($"Client {UserSocket.RemoteEndPoint} disconnected!");
+                Program.Clients.Remove(UserSocket);
             }
         }
 

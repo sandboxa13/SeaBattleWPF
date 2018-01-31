@@ -19,7 +19,7 @@ namespace SeaBattleWPF.Core.Models
 
         public Message()
         {
-            
+                
         }
     }
 }

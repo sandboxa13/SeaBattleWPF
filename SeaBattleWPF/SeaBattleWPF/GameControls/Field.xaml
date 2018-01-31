@@ -9,7 +9,7 @@
              xmlns:models="clr-namespace:SeaBattleWPF.Core.Models;assembly=SeaBattleWPF.Core"
              d:DesignHeight="500" d:DesignWidth="500"
              DataContext="{Binding BattleFieldViewModel , Source={StaticResource ViewModelLocator}}">
-    
+
     <UserControl.Resources>
         <converters:StringToBrushConverter x:Key="StringToBrushConverter" />
     </UserControl.Resources>
@@ -23,7 +23,7 @@
             </ItemsControl.ItemsPanel>
             <ItemsControl.ItemTemplate>
                 <DataTemplate DataType="{x:Type models:Cell}">
-                    <Label Background="{Binding Background, Converter={StaticResource StringToBrushConverter}}"  
+                    <Label Background="{Binding Background, Converter={StaticResource StringToBrushConverter}}" 
                            Margin="2" >
                         <Label.InputBindings>
                             <MouseBinding Gesture="LeftClick" Command="{Binding Click}" >

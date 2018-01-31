@@ -11,5 +11,7 @@ namespace SeaBattleWPF.Core.Services
         void SendData(Message message);
 
         void ReciveData();
+
+        event ServerHandlerService.NewCoordinate CheckCoordinate;
     }
 }

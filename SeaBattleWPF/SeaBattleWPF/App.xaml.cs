@@ -20,7 +20,9 @@ namespace SeaBattleWPF
         {
             MapGeneratorService = new MapGeneratorService();
 
-            ServerHandlerService = new ServerHandlerService();
+            ServerHandlerService = ServerHandlerService.getInstance();
+
+            ServerHandlerService.Connect();
 
             base.OnStartup(e);
 
