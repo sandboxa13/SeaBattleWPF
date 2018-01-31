@@ -36,9 +36,9 @@ namespace SeaBattleWPF.Core.Commands
                 await _task.Invoke();
                 UpdateCanExecute(true);
             }
-            catch
+            catch(Exception ex)
             {
-                // ignored
+                
             }
             void UpdateCanExecute(bool value)
             {

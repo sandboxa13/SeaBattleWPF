@@ -29,11 +29,14 @@ namespace SeaBattleWPF.Core.ViewModels
 
         public BattleFieldViewModel(
             IMapGeneratorService mapGeneratorService,   
-            INavigationService navigationService)
+            INavigationService navigationService,
+            IServerHandlerService serverHandlerService)
         {   
+            serverHandlerService.Connect();
+
             _cells = new Cell[10,10];
 
-            _cells = mapGeneratorService.GenerateMap();
+            _cells = mapGeneratorService.GenerateMap(serverHandlerService);
 
             AllCells = _cells.Cast<Cell>();
         }

@@ -26,7 +26,7 @@
                     <Label Background="{Binding Background, Converter={StaticResource StringToBrushConverter}}"  
                            Margin="2" >
                         <Label.InputBindings>
-                            <MouseBinding Gesture="LeftClick" Command="{Binding Click}">
+                            <MouseBinding Gesture="LeftClick" Command="{Binding Click}" >
 
                             </MouseBinding>
                         </Label.InputBindings>

@@ -6,8 +6,8 @@ using SeaBattleWPF.Core.ViewModels;
 namespace SeaBattleWPF.Core.Services
 {
     public interface IMapGeneratorService
-    {
-        Cell[,] GenerateMap();
+    {   
+        Cell[,] GenerateMap(IServerHandlerService serverHandlerService);
 
         IEnumerable<BaseShip> GenerateShips();   
     }

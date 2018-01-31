@@ -9,7 +9,7 @@ namespace SeaBattleWPF.Core.Services
     {
         private Map _map;   
 
-        public Cell[,] GenerateMap()
+        public Cell[,] GenerateMap(IServerHandlerService serverHandlerService)
         {
             _map = new Map();
 
@@ -24,10 +24,10 @@ namespace SeaBattleWPF.Core.Services
                     switch (_map.MapBlocks[x, y].State)
                     {
                         case BlockState.IsShip:
-                            _cells[x, y] = new Cell(x, y, "Red");
+                            _cells[x, y] = new Cell(x, y, "Red", serverHandlerService);
                             break;
                         default:
-                            _cells[x, y] = new Cell(x, y, "Black");
+                            _cells[x, y] = new Cell(x, y, "Black", serverHandlerService);
                             break;
                     }
                 }

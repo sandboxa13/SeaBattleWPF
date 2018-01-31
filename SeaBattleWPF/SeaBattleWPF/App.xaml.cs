@@ -14,9 +14,13 @@ namespace SeaBattleWPF
 
         public static MapGeneratorService MapGeneratorService;
 
+        public static ServerHandlerService ServerHandlerService;
+
         protected override void OnStartup(StartupEventArgs e)
         {
             MapGeneratorService = new MapGeneratorService();
+
+            ServerHandlerService = new ServerHandlerService();
 
             base.OnStartup(e);
 

@@ -1,19 +1,25 @@
-﻿using System.Windows.Input;
-    
+﻿using System;
+using System.Windows.Input;
+using SeaBattleWPF.Core.Commands;
+using SeaBattleWPF.Core.Enums;
+using SeaBattleWPF.Core.Services;
+
 namespace SeaBattleWPF.Core.Models
 {
     public class Cell
     {
-        public Cell(int r, int c, string color)
+        public Cell(int r, int c, string color, IServerHandlerService serverHandlerService)
         {
-            Row = r;    
+            Row = r;
             Column = c;
-            Background = color;           
-        }
+            Background = color;
 
-        private void SomeMethod()
-        {
-            
+            Click = new RelayCommand(() =>
+            {
+                var message = new Message(MessageEnum.Coordinate, Row, Column);
+
+                serverHandlerService.SendData(message);
+            });
         }
 
         public int Row { get; }
