@@ -5,7 +5,7 @@ using SeaBattleWPF.Core.Services;
 
 namespace SeaBattleWPF.Core.ViewModels
 {
-    public class MainMenuViewModel
+    public class MainMenuViewModel : BaseViewModel
     {
         #region Public Commands
 

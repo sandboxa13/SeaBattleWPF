@@ -5,6 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         mc:Ignorable="d"
         WindowState="Maximized"
+        
         WindowStartupLocation="CenterScreen"
         Title="MainWindow" Height="600" Width="900">
     <Grid>

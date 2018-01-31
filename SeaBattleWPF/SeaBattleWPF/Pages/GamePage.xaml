@@ -15,14 +15,26 @@
             <ColumnDefinition Width="*"></ColumnDefinition>
         </Grid.ColumnDefinitions>
 
-        <gameControls:Field Margin="5" Grid.Column="0" Grid.Row="0" x:Name="Computer">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="0.3*"></RowDefinition>
+            <RowDefinition Height="4*"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+        </Grid.RowDefinitions>
+
+
+        <TextBlock Grid.Row ="0"  Grid.Column="1" Style="{StaticResource StyledTextBlock}" Text="You"></TextBlock>
+
+        <gameControls:Field  Grid.Row ="1"  Grid.Column="1" Margin="10" x:Name="Computer">
 
         </gameControls:Field>
 
-        <gameControls:Field Margin="5" Grid.Column="1" Grid.Row="0" x:Name="Player">
+        <TextBlock Grid.Row ="0"  Grid.Column="0" Style="{StaticResource StyledTextBlock}" Text="Enemy"></TextBlock>
+
+        <gameControls:Field Grid.Row ="1"  Grid.Column="0" Margin="10" x:Name="Player">
 
         </gameControls:Field>
 
+        <Frame x:Name="Chat" NavigationUIVisibility="Hidden" Source="ChatPage.xaml" Grid.ColumnSpan="2" Grid.Row="2"></Frame>
     </Grid>
 </pages:BasePage>
 

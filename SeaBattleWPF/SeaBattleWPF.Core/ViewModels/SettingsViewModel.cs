@@ -11,7 +11,6 @@ namespace SeaBattleWPF.Core.ViewModels
         public SettingsViewModel(INavigationService navigationService)
         {
             GoBackCommand = new RelayCommand(() => navigationService.Navigate("MainMenu"));
-
         }
     }
 }

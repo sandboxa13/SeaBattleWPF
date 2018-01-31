@@ -50,6 +50,7 @@
     <Compile Include="ViewModels\BattleFieldViewModel.cs" />
     <Compile Include="Models\Cell.cs" />
     <Compile Include="ViewModels\ChatViewModel.cs" />
+    <Compile Include="ViewModels\GameVeiwModel.cs" />
     <Compile Include="ViewModels\MainMenuViewModel.cs" />
     <Compile Include="ViewModels\SettingsViewModel.cs" />
   </ItemGroup>
