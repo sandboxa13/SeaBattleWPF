@@ -59,6 +59,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ServerLogic\Message.cs" />
     <Compile Include="ServerLogic\MessageEnum.cs" />
+    <Compile Include="SocketExtentions.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

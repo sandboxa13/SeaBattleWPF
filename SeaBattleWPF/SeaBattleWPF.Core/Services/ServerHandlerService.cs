@@ -15,20 +15,27 @@ namespace SeaBattleWPF.Core.Services
         private const string Ip = "127.0.0.1";
         private static Socket _socket;
             
-        private static ServerHandlerService instance;
+        private static ServerHandlerService _instance;
 
-        public delegate void NewCoordinate(Message message);
-        // Событие, возникающее при выводе денег
-        public event NewCoordinate CheckCoordinate;     
+        public delegate void MessageDelegate(Message message);
+            
+        public event MessageDelegate CheckCoordinate;
+
+        public event MessageDelegate Message;
+
+        public event MessageDelegate Shoot;   
+            
+        public event MessageDelegate Miss;
+        
 
         private ServerHandlerService()
         {
 
         }
 
-        public static ServerHandlerService getInstance()
+        public static ServerHandlerService GetInstance()
         {
-            return instance ?? (instance = new ServerHandlerService());
+            return _instance ?? (_instance = new ServerHandlerService());
         }
 
         public static bool IsConnected;
@@ -87,6 +94,13 @@ namespace SeaBattleWPF.Core.Services
                         CheckCoordinate?.Invoke(message);
                         break;
                     case MessageEnum.Message:
+                        Message?.Invoke(message);
+                        break;
+                    case MessageEnum.Shoot:
+                        Shoot?.Invoke(message);
+                        break;
+                    case MessageEnum.Miss:
+                        Miss?.Invoke(message);
                         break;
                 }
             }

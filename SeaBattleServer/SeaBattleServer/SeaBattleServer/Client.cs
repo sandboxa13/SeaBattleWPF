@@ -15,8 +15,6 @@ namespace SeaBattleServer
 
         public Client(Socket handle, int id)
         {
-            Program.Clients.Add(handle);
-
             _id = id;
             UserSocket = handle;
             var userThread = new Thread(Listner) { IsBackground = true };
@@ -60,22 +58,40 @@ namespace SeaBattleServer
                     break;
                 case MessageEnum.Message:
                     break;
-            }   
+                case MessageEnum.Miss:
+                    SendMissInfoToPlayer(message);
+                    break;  
+                case MessageEnum.Shoot:
+                    SendShootInfoToPlayer(message);
+                    break;
+            }
+        }
+
+
+        private void SendShootInfoToPlayer(Message message)
+        {
+            var getClient = Program.Clients.FirstOrDefault(x => x != UserSocket);
+            getClient.SendMessage(new Message(MessageEnum.Shoot, message.message));
+        }
+
+        private void SendMissInfoToPlayer(Message message)
+        {
+            var getClient = Program.Clients.FirstOrDefault(x => x != UserSocket);
+            getClient.SendMessage(new Message(MessageEnum.Miss, message.message));
         }
 
         private void SendCoordinateToSecondPlayer(Message message)
         {
-            foreach (var client in Program.Clients)
-            {
-                var formatter = new XmlSerializer(typeof(Message));
-                var stream = new MemoryStream();
+            var getClient = Program.Clients.FirstOrDefault(x => x != UserSocket);
 
-                formatter.Serialize(stream, message);
+            var formatter = new XmlSerializer(typeof(Message));
+            var stream = new MemoryStream();
 
-                var msg = stream.ToArray();
+            formatter.Serialize(stream, message);
 
-                client?.Send(msg);
-            }     
-        }
+            var msg = stream.ToArray();
+
+            getClient?.Send(msg);
+        }        
     }
 }

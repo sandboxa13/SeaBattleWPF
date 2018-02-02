@@ -6,7 +6,8 @@
       xmlns:local="clr-namespace:SeaBattleWPF.Pages"
       mc:Ignorable="d" 
       d:DesignHeight="300" d:DesignWidth="300"
-      Title="ChatPage">
+      Title="ChatPage"
+      DataContext="{Binding ChatViewModel , Source={StaticResource ViewModelLocator}}">
 
     <local:BasePage.Resources>
         <Style x:Key="MyHeaderStyle" TargetType="{x:Type GridViewColumnHeader}">
@@ -16,11 +17,11 @@
             <Setter Property="Foreground" Value="{StaticResource TextForgeGroundLightBrush}"></Setter>
         </Style>
     </local:BasePage.Resources>
+
     <Grid Margin="10">
-        <ListView BorderThickness="0" ItemContainerStyle="{StaticResource ItemStyle}" x:Name="listView" Background="Transparent">
+        <ListView  BorderThickness="0" ItemContainerStyle="{StaticResource ItemStyle}" x:Name="listView" Background="Transparent">
             <ListView.View>
                 <GridView ColumnHeaderContainerStyle="{StaticResource MyHeaderStyle}">
-                    <GridViewColumn DisplayMemberBinding="{Binding Nick}"/>
                     <GridViewColumn DisplayMemberBinding="{Binding Message}"/>
                 </GridView>
             </ListView.View>

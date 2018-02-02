@@ -12,6 +12,12 @@ namespace SeaBattleWPF.Core.Services
 
         void ReciveData();
 
-        event ServerHandlerService.NewCoordinate CheckCoordinate;
+        event ServerHandlerService.MessageDelegate CheckCoordinate;
+
+        event ServerHandlerService.MessageDelegate Shoot;
+
+        event ServerHandlerService.MessageDelegate Miss;  
+
+        event ServerHandlerService.MessageDelegate Message;
     }
 }

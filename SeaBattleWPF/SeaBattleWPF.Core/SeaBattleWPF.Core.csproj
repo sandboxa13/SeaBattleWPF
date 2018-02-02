@@ -52,7 +52,6 @@
     <Compile Include="Services\ServerHandlerService.cs" />
     <Compile Include="ViewModels\BaseViewModel.cs" />
     <Compile Include="Commands\RelayCommand.cs" />
-    <Compile Include="ViewModels\BattleFieldViewModel.cs" />
     <Compile Include="Models\Cell.cs" />
     <Compile Include="ViewModels\ChatViewModel.cs" />
     <Compile Include="ViewModels\GameVeiwModel.cs" />

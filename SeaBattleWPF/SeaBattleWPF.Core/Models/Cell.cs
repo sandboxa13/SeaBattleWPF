@@ -1,5 +1,4 @@
 ﻿using System.Windows.Input;
-using SeaBattle.Engine.Common.MapLogic;
 using SeaBattleWPF.Core.Commands;
 using SeaBattleWPF.Core.Enums;
 using SeaBattleWPF.Core.Services;
@@ -28,6 +27,14 @@ namespace SeaBattleWPF.Core.Models
 
                 serverHandlerService.SendData(message);
             });
+        }
+
+        public Cell(int r, int c, string color, CellStateEnum cellStateEnum)
+        {
+            Row = r;
+            Column = c;
+            Background = color;
+            BlockState = cellStateEnum;
         }
     }
 }

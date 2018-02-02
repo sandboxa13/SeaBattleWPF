@@ -3,6 +3,8 @@
     public enum MessageEnum
     {
         Coordinate,           
-        Message
+        Message,
+        Shoot,  
+        Miss
     }
 }

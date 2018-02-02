@@ -14,7 +14,12 @@ namespace SeaBattleServer.ServerLogic
             Info = messageEnum;
             this.message = message;
         }
-            
+
+        public Message(MessageEnum messageEnum)
+        {
+            Info = messageEnum;
+        }
+
         public Message()
         {
             

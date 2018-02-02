@@ -5,9 +5,16 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
       xmlns:gameControls="clr-namespace:SeaBattleWPF.GameControls"
       xmlns:pages="clr-namespace:SeaBattleWPF.Pages"
+      xmlns:models="clr-namespace:SeaBattleWPF.Core.Models;assembly=SeaBattleWPF.Core"
+      xmlns:converters="clr-namespace:SeaBattleWPF.Converters"
       mc:Ignorable="d" 
       d:DesignHeight="300" d:DesignWidth="300"
-      Title="GamePage">
+      Title="GamePage"
+      DataContext="{Binding GameVeiwModel , Source={StaticResource ViewModelLocator}}">
+
+    <Page.Resources>
+        <converters:StringToBrushConverter x:Key="StringToBrushConverter" />
+    </Page.Resources>
 
     <Grid>
         <Grid.ColumnDefinitions>
@@ -24,15 +31,51 @@
 
         <TextBlock Grid.Row ="0"  Grid.Column="1" Style="{StaticResource StyledTextBlock}" Text="You"></TextBlock>
 
-        <gameControls:Field  Grid.Row ="1"  Grid.Column="1" Margin="10" x:Name="Computer">
-
-        </gameControls:Field>
+        <Border Margin="10" Grid.Column="1" Grid.Row="1">
+            <Grid>
+                <ItemsControl ItemsSource="{Binding  PlayerCells}">
+                    <ItemsControl.ItemsPanel>
+                        <ItemsPanelTemplate>
+                            <UniformGrid IsItemsHost="True"/>
+                        </ItemsPanelTemplate>
+                    </ItemsControl.ItemsPanel>
+                    <ItemsControl.ItemTemplate>
+                        <DataTemplate DataType="{x:Type models:Cell}">
+                            <Label Background="{Binding Background, Converter={StaticResource StringToBrushConverter}}" 
+                                   Margin="2" >
+                                
+                            </Label>
+                        </DataTemplate>
+                    </ItemsControl.ItemTemplate>
+                </ItemsControl>
+            </Grid>
+        </Border>
 
         <TextBlock Grid.Row ="0"  Grid.Column="0" Style="{StaticResource StyledTextBlock}" Text="Enemy"></TextBlock>
 
-        <gameControls:Field Grid.Row ="1"  Grid.Column="0" Margin="10" x:Name="Player">
+        <Border Margin="10" Grid.Column="0" Grid.Row="1">
+            <Grid>
+                <ItemsControl IsEnabled="{Binding IsEnabled}" ItemsSource="{Binding EnemyCells}">
+                    <ItemsControl.ItemsPanel>
+                        <ItemsPanelTemplate>
+                            <UniformGrid IsItemsHost="True"/>
+                        </ItemsPanelTemplate>
+                    </ItemsControl.ItemsPanel>
+                    <ItemsControl.ItemTemplate>
+                        <DataTemplate DataType="{x:Type models:Cell}">
+                            <Label Background="{Binding Background, Converter={StaticResource StringToBrushConverter}}" 
+                                   Margin="2" >
+                                <Label.InputBindings>
+                                    <MouseBinding Gesture="LeftClick" Command="{Binding Click}" >
 
-        </gameControls:Field>
+                                    </MouseBinding>
+                                </Label.InputBindings>
+                            </Label>
+                        </DataTemplate>
+                    </ItemsControl.ItemTemplate>
+                </ItemsControl>
+            </Grid>
+        </Border>
 
         <Frame x:Name="Chat" NavigationUIVisibility="Hidden" Source="ChatPage.xaml" Grid.ColumnSpan="2" Grid.Row="2"></Frame>
     </Grid>

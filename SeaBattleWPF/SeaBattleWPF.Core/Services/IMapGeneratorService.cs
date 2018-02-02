@@ -9,6 +9,8 @@ namespace SeaBattleWPF.Core.Services
     {   
         Cell[,] GenerateMap(IServerHandlerService serverHandlerService);
 
+        Cell[,] GenerateMap();
+
         IEnumerable<BaseShip> GenerateShips();   
     }
 }
