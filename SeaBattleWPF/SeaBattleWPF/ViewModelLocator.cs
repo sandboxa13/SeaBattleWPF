@@ -6,7 +6,7 @@ namespace SeaBattleWPF
     {   
         public MainMenuViewModel MainMenuViewModel => new MainMenuViewModel(App.Navigation);
 
-        public ChatViewModel ChatViewModel => new ChatViewModel(App.ServerHandlerService);
+        public ChatViewModel ChatViewModel => new ChatViewModel();
 
         public SettingsViewModel SettingsViewModel => new SettingsViewModel(App.Navigation);
 
