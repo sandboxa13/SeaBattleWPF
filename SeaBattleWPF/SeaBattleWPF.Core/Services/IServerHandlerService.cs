@@ -19,5 +19,7 @@ namespace SeaBattleWPF.Core.Services
         event ServerHandlerService.MessageDelegate Miss;  
 
         event ServerHandlerService.MessageDelegate Message;
+
+        event ServerHandlerService.MessageDelegate Win;
     }
 }

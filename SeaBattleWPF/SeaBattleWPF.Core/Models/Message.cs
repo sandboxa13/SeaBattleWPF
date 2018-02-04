@@ -17,6 +17,12 @@ namespace SeaBattleWPF.Core.Models
             message = $"{x} {y}";
         }
 
+        public Message(MessageEnum messageEnum, string message)
+        {
+            Info = messageEnum;
+            this.message = message;
+        }
+
         public Message(MessageEnum messageEnum)
         {
             Info = messageEnum;

@@ -38,8 +38,10 @@
     <Reference Include="System.Data" />
     <Reference Include="System.Net.Http" />
     <Reference Include="System.Xml" />
+    <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Commands\CustomObservableCollection.cs" />
     <Compile Include="Enums\CellStateEnum.cs" />
     <Compile Include="Enums\MessageEnum.cs" />
     <Compile Include="Models\Message.cs" />
@@ -55,8 +57,10 @@
     <Compile Include="Models\Cell.cs" />
     <Compile Include="ViewModels\ChatViewModel.cs" />
     <Compile Include="ViewModels\GameVeiwModel.cs" />
+    <Compile Include="ViewModels\LosePageViewModel.cs" />
     <Compile Include="ViewModels\MainMenuViewModel.cs" />
     <Compile Include="ViewModels\SettingsViewModel.cs" />
+    <Compile Include="ViewModels\WinPageViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\SeaBattle.Engine\SeaBattle.Engine.csproj">

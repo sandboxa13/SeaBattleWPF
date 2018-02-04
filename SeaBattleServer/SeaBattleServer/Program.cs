@@ -8,7 +8,7 @@ namespace SeaBattleServer
     public class Program
     {
         private const int Port = 8888;
-        private const string Ip = "127.0.0.1";
+        private const string Ip = "25.29.220.228";
         private static Socket _serverSocket;
         public static List<Socket> Clients = new List<Socket>();
             

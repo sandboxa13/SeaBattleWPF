@@ -5,6 +5,7 @@
         Coordinate,           
         Message,
         Shoot,  
-        Miss
+        Miss,
+        Win
     }
 }

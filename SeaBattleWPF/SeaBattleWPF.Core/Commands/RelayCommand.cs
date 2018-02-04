@@ -36,10 +36,11 @@ namespace SeaBattleWPF.Core.Commands
                 await _task.Invoke();
                 UpdateCanExecute(true);
             }
-            catch(Exception ex)
+            catch
             {
-                
+                // ignored
             }
+
             void UpdateCanExecute(bool value)
             {
                 _canExecute = value;
