@@ -27,7 +27,6 @@ namespace SeaBattleWPF.Core.ViewModels
 
         private string _message;
 
-
         #endregion  
 
         #region Public Members  
@@ -111,13 +110,36 @@ namespace SeaBattleWPF.Core.ViewModels
                 var mesage = new Message(MessageEnum.Message, Message);
                 _serverHandlerService.SendData(mesage);
             });
-
-            _serverHandlerService.CheckCoordinate += _serverHandlerService_CheckCoordinate;
-            _serverHandlerService.Shoot += _serverHandlerService_Shoot;
-            _serverHandlerService.Miss += _serverHandlerService_Miss;
-            _serverHandlerService.Win += _serverHandlerService_Win;
-            _serverHandlerService.Message += _serverHandlerService_Message;
+                
+            _serverHandlerService.NewMessage += NewMessage;
         }
+
+        private void NewMessage(Message message)
+        {
+            switch (message.Info)
+            {
+                case MessageEnum.Message:
+                    _serverHandlerService_Message(message);
+                    break;
+                case MessageEnum.Coordinate:
+                    _serverHandlerService_CheckCoordinate(message);
+                    break;
+                case MessageEnum.Miss:
+                    _serverHandlerService_Miss(message);
+                    break;
+                case MessageEnum.Shoot:
+                    _serverHandlerService_Shoot(message);
+                    break;
+                case MessageEnum.Win:
+                    _serverHandlerService_Win(message);
+                    break;
+            }
+        }
+
+
+        #endregion
+
+        #region Private Methods
 
         private void _serverHandlerService_Message(Message message)
         {
@@ -128,13 +150,9 @@ namespace SeaBattleWPF.Core.ViewModels
         {
             _dispatcher.Invoke(() =>
             {
-                _navigationService.Navigate("WinPage"); 
+                _navigationService.Navigate("WinPage");
             });
         }
-
-        #endregion
-
-        #region Event Handlers
 
         private void _serverHandlerService_Miss(Message message)
         {

@@ -7,7 +7,7 @@
       xmlns:models="clr-namespace:SeaBattleWPF.Core.Models;assembly=SeaBattleWPF.Core"
       xmlns:converters="clr-namespace:SeaBattleWPF.Converters"
       mc:Ignorable="d" 
-      d:DesignHeight="300" d:DesignWidth="300"
+      d:DesignHeight="720" d:DesignWidth="1280"
       Title="GamePage"
       DataContext="{Binding GameVeiwModel , Source={StaticResource ViewModelLocator}}">
 
@@ -19,18 +19,19 @@
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*"></ColumnDefinition>
             <ColumnDefinition Width="*"></ColumnDefinition>
+            <ColumnDefinition Width="*"></ColumnDefinition>
         </Grid.ColumnDefinitions>
 
         <Grid.RowDefinitions>
             <RowDefinition Height="0.3*"></RowDefinition>
-            <RowDefinition Height="4*"></RowDefinition>
+            <RowDefinition Height="2*"></RowDefinition>
             <RowDefinition Height="*"></RowDefinition>
         </Grid.RowDefinitions>
 
+        <!-- Player Field -->
+        <TextBlock Grid.Row ="0"  Grid.Column="2" Style="{StaticResource StyledTextBlock}" Text="You"></TextBlock>
 
-        <TextBlock Grid.Row ="0"  Grid.Column="1" Style="{StaticResource StyledTextBlock}" Text="You"></TextBlock>
-
-        <Border Margin="10" Grid.Column="1" Grid.Row="1">
+        <Border Margin="10" Grid.Column="2" Grid.Row="1">
             <Grid>
                 <ItemsControl ItemsSource="{Binding  PlayerCells}">
                     <ItemsControl.ItemsPanel>
@@ -50,6 +51,9 @@
             </Grid>
         </Border>
 
+
+
+        <!-- Enemy Field -->
         <TextBlock Grid.Row ="0"  Grid.Column="0" Style="{StaticResource StyledTextBlock}" Text="Enemy"></TextBlock>
 
         <Border Margin="10" Grid.Column="0" Grid.Row="1">
@@ -76,24 +80,73 @@
             </Grid>
         </Border>
 
-        <ListBox Margin="10" Grid.Column="0" Grid.Row="2" 
-                 ItemsSource="{Binding Messages}" 
-                 FontSize="15" BorderThickness="0" 
-                 Foreground="#e6e6e6" 
-                 Background="Transparent">
-        </ListBox>
-        <StackPanel Grid.Column="1" Grid.Row="2">
-            <TextBox Margin="10" 
-                     BorderThickness="0"
-                     Padding="5"
-                     Text="{Binding Message}"
-                     Foreground="#e6e6e6"
-                     HorizontalContentAlignment="Center" 
-                     VerticalContentAlignment="Center"
-                     Background="Black"></TextBox>
-            <Button Command="{Binding Send}" Style="{StaticResource StyledButton}" Content="Send"></Button>
-        </StackPanel>
+
+
+        <!-- Chat -->
+        <Border Grid.Column="1" Grid.Row="2">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="3*"></RowDefinition>
+                    <RowDefinition Height="*"></RowDefinition>
+                </Grid.RowDefinitions>
+                <ListBox Grid.Row="0" Margin="10"
+                         ItemsSource="{Binding Messages}" 
+                         FontSize="15" BorderThickness="0" 
+                         Foreground="#e6e6e6" 
+                         Background="Transparent">
+                </ListBox>
+                <DockPanel  Grid.Row="1">
+                    <Button DockPanel.Dock="Left" Style="{StaticResource ChatSendButton}"  Command="{Binding Send}"  Content="Send"></Button>
+
+                    <TextBox DockPanel.Dock="Right" Margin="10"                              
+                             Text="{Binding Message}"
+                             Foreground="#e6e6e6"
+                             HorizontalContentAlignment="Left"
+                             VerticalContentAlignment="Center"
+                             Background="Transparent"></TextBox>
+                </DockPanel>
+
+            </Grid>
+        </Border>
+
         
+
+        <!-- Player Ships -->
+        <Border Grid.Column="2" Grid.Row="2">
+            <TextBlock Text="Your ships" Style="{StaticResource StyledTextBlock}"></TextBlock>
+        </Border>
+
+        
+
+        <!-- Enemy Ships -->
+        <Border Grid.Column="0" Grid.Row="2">
+            <TextBlock Text="Enemy ships" Style="{StaticResource StyledTextBlock}"></TextBlock>
+        </Border>
+
+
+
+        <!-- Abilitys -->
+        <Border Grid.Column="1" Grid.Row="1">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition></ColumnDefinition>
+                    <ColumnDefinition></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                
+                <TextBlock Style="{StaticResource StyledTextBlock}" 
+                           Text="Your abilitys" 
+                           FontSize="30"
+                           Grid.Column="1"
+                           VerticalAlignment="Center"></TextBlock>
+                <TextBlock Style="{StaticResource StyledTextBlock}" 
+                           Text="Enemy abilitys" 
+                           FontSize="30"
+                           Grid.Column="0"
+                           VerticalAlignment="Center"></TextBlock>
+            </Grid>
+        </Border>
+        
+
     </Grid>
 </pages:BasePage>
 

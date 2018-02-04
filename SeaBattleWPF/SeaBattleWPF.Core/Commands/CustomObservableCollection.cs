@@ -9,6 +9,8 @@ namespace SeaBattleWPF.Core.Commands
     public class CustomObservableCollection<T> : ObservableCollection<T>
     {
         public override event NotifyCollectionChangedEventHandler CollectionChanged;
+
+
         protected override void OnCollectionChanged(NotifyCollectionChangedEventArgs e)
         {   
             var eh = CollectionChanged;
