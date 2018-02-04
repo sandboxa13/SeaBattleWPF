@@ -57,6 +57,7 @@ namespace SeaBattleServer
                     SendCoordinateToSecondPlayer(message);
                     break;
                 case MessageEnum.Message:
+                    SendMessage(message);   
                     break;
                 case MessageEnum.Miss:
                     SendMissInfoToPlayer(message);
@@ -64,7 +65,22 @@ namespace SeaBattleServer
                 case MessageEnum.Shoot:
                     SendShootInfoToPlayer(message);
                     break;
+                case MessageEnum.Win:   
+                    SendWinToPlayer(message);
+                    break;
             }
+        }
+
+        private void SendMessage(Message message)
+        {
+            var getClient = Program.Clients.FirstOrDefault(x => x != UserSocket);
+            getClient.SendMessage(new Message(MessageEnum.Message, message.message));
+        }
+
+        private void SendWinToPlayer(Message message)
+        {
+            var getClient = Program.Clients.FirstOrDefault(x => x != UserSocket);
+            getClient.SendMessage(new Message(MessageEnum.Win, message.message));
         }
 
 

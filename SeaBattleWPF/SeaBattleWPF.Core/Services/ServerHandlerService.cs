@@ -12,7 +12,7 @@ namespace SeaBattleWPF.Core.Services
     public class ServerHandlerService : IServerHandlerService
     {
         private const int Port = 8888;
-        private const string Ip = "127.0.0.1";
+        private const string Ip = "25.29.220.228";
         private static Socket _socket;
             
         private static ServerHandlerService _instance;
@@ -25,8 +25,10 @@ namespace SeaBattleWPF.Core.Services
 
         public event MessageDelegate Shoot;   
             
-        public event MessageDelegate Miss;
-        
+        public event MessageDelegate Miss;  
+
+        public event MessageDelegate Win;
+
 
         private ServerHandlerService()
         {
@@ -101,6 +103,9 @@ namespace SeaBattleWPF.Core.Services
                         break;
                     case MessageEnum.Miss:
                         Miss?.Invoke(message);
+                        break;
+                    case MessageEnum.Win:
+                        Win?.Invoke(message);
                         break;
                 }
             }

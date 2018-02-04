@@ -3,7 +3,6 @@
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-      xmlns:gameControls="clr-namespace:SeaBattleWPF.GameControls"
       xmlns:pages="clr-namespace:SeaBattleWPF.Pages"
       xmlns:models="clr-namespace:SeaBattleWPF.Core.Models;assembly=SeaBattleWPF.Core"
       xmlns:converters="clr-namespace:SeaBattleWPF.Converters"
@@ -77,7 +76,24 @@
             </Grid>
         </Border>
 
-        <Frame x:Name="Chat" NavigationUIVisibility="Hidden" Source="ChatPage.xaml" Grid.ColumnSpan="2" Grid.Row="2"></Frame>
+        <ListBox Margin="10" Grid.Column="0" Grid.Row="2" 
+                 ItemsSource="{Binding Messages}" 
+                 FontSize="15" BorderThickness="0" 
+                 Foreground="#e6e6e6" 
+                 Background="Transparent">
+        </ListBox>
+        <StackPanel Grid.Column="1" Grid.Row="2">
+            <TextBox Margin="10" 
+                     BorderThickness="0"
+                     Padding="5"
+                     Text="{Binding Message}"
+                     Foreground="#e6e6e6"
+                     HorizontalContentAlignment="Center" 
+                     VerticalContentAlignment="Center"
+                     Background="Black"></TextBox>
+            <Button Command="{Binding Send}" Style="{StaticResource StyledButton}" Content="Send"></Button>
+        </StackPanel>
+        
     </Grid>
 </pages:BasePage>
 
